@@ -72,6 +72,17 @@
                     </div>
                 </a>
                 
+                <a href="agregarProducto.jsp">
+                    <div class="flip flip-vertical">
+                        <div class="front" style="background-image: url(img/fondoMenu.jpg)">
+                            <h1 class="text-shadow">Agregar Producto</h1>
+                        </div>
+                        <div class="back">
+                            <h2>Agregar Productos para su venta.</h2>
+                        </div>
+                    </div>
+                </a>
+                
               
 
                 <a href="index.jsp">
