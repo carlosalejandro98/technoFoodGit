@@ -32,6 +32,10 @@
         <servlet-name>servletBorrarItem</servlet-name>
         <servlet-class>controlador.servletBorrarItem</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>servletPago</servlet-name>
+        <servlet-class>controlador.servletPago</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>servletLogin</servlet-name>
         <url-pattern>/servletLogin</url-pattern>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>servletBorrarItem</servlet-name>
         <url-pattern>/borrarItem</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>servletPago</servlet-name>
+        <url-pattern>/pagar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

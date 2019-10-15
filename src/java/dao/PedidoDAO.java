@@ -13,6 +13,7 @@ import oracle.jdbc.OracleTypes;
 public class PedidoDAO {
 
     private static final String SQL_READALL = "{call Sp_Listar_Pedido(?)}";
+    private static final String SQL_INSERT = "{call Sp_Listar_Pedido(?,?,?,?)}";
 
     private static final Conexion conexion = Conexion.estado();
 
@@ -39,7 +40,6 @@ public class PedidoDAO {
                 pedido.setTipo(rs.getString("tipo_producto"));
                 pedido.setId_mesa(rs.getInt("id_mesa"));
                 pedido.setEstado(rs.getString("estado_pedido"));
-                
 
                 lista.add(pedido);
             }
@@ -49,5 +49,25 @@ public class PedidoDAO {
             conexion.cerrarConexion();
             return lista;
         }
+    }
+
+    public boolean create(Pedido pedido) {
+        PreparedStatement pre;
+        try {
+            pre = conexion.getConnection().prepareCall(SQL_INSERT);
+            pre.setDate(1, pedido.getFecha());
+            pre.setInt(2, pedido.getCantidad());
+            pre.setInt(3, pedido.getTotal());
+            pre.setInt(4, pedido.getId_pedido());
+
+            if (pre.executeUpdate() > 0) {
+                return true;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            conexion.cerrarConexion();
+        }
+        return false;
     }
 }

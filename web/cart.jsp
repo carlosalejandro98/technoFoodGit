@@ -152,32 +152,40 @@
                     </table>
                     <%  if (carritos == null) { %>   
                     <center><h4>No hay Productos</h4></center>
-                            <%}%>
+                        <%}%>
                 </div>
 
 
             </div>
         </section> <!--/#cart_items-->
-
-        <section id="do_action">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="total_area">
-                            <ul>
-                                <li>Sub Total <span id="txtSubTotal">$<%= Math.round(total * 100 / 100)%></span></li>
-                                <li>Impuesto <span>$0</span></li>
-                                <li>Total <span id="txtTotal">$<%= Math.round(total * 100 / 100)%></span></li>
-                            </ul>
-                            <center>
-                                <a class="btn btn-default check_out" href="">Generar Boucher</a>
-                            </center>
+        
+        
+        
+        
+        <form action="pagar" method="POST">
+            <section id="do_action">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="total_area">
+                                <ul>
+                                    <input type="date" name="txtFecha" />
+                                    <li>Sub Total <span id="txtSubTotal">$<%= Math.round(total * 100 / 100)%></span></li>
+                                    <li>Impuesto <span>$0</span></li>
+                                    <li>Total <span id="txtTotal">$<%= Math.round(total * 100 / 100)%></span></li>
+                                </ul>
+                                <center>
+                                    <button class="btn btn-default check_out" href="" type="submit" name="btnAccion" value="Agregar">Generar Boucher</button>
+                                </center>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section><!--/#do_action-->
-
+            </section><!--/#do_action-->
+        </form>
+                                
+                                
+                                
         <footer id="footer"><!--Footer-->
             <div class="footer-top">
                 <div class="container">

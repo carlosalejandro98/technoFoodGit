@@ -19,6 +19,16 @@ public class Pedido {
     public Pedido() {
     }
 
+    public Pedido(Date fecha, int cantidad, int total, int id_estado, int id_producto) {
+        this.fecha = fecha;
+        this.cantidad = cantidad;
+        this.total = total;
+        this.id_estado = id_estado;
+        this.id_producto = id_producto;
+    }
+    
+    
+
     public Pedido(int id_pedido, Date fecha, int cantidad, String producto) {
         this.id_pedido = id_pedido;
         this.fecha = fecha;
