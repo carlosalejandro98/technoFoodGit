@@ -64,7 +64,7 @@
                         <img src="img/iconoplato.png" alt="IMG">
                     </div>
 
-                    <form class="contact100-form validate-form" action="servletRecetas" method="POST">
+                    <form class="contact100-form validate-form" action="producto" method="POST">
                         <span class="contact100-form-title">
                             <center>
                                 Producto
@@ -109,7 +109,7 @@
                         <br>
                         <div class="wrap-input100 validate-input">
                             <label>Tipo de Producto:</label>
-                            <select name="cboMesa">
+                            <select name="cboTipoProducto">
                                 <c:forEach var="tipos" items="${tipo.rows}">
                                     <option value="${tipos.id_tipo_producto}">${tipos.tipo_producto}</option>
                                 </c:forEach>
@@ -119,7 +119,7 @@
 
                         <div class="wrap-input100 validate-input">
                             <label>Seleccione el Insumo:</label>
-                            <select name="cboMesa">
+                            <select name="cboInsumo">
                                 <c:forEach var="insumos" items="${insumo.rows}">
                                     <option value="${insumos.id_insumo}">${insumos.nombre}</option>
                                 </c:forEach>
@@ -129,7 +129,7 @@
 
                         <div class="wrap-input100 validate-input">
                             <label>Seleccione la receta:</label>
-                            <select name="cboMesa">
+                            <select name="cboReceta">
                                 <c:forEach var="recetas" items="${receta.rows}">
                                     <option value="${recetas.id_receta}">${recetas.nombre_receta}</option>
                                 </c:forEach>

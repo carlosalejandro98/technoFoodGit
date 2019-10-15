@@ -36,6 +36,10 @@
         <servlet-name>servletPago</servlet-name>
         <servlet-class>controlador.servletPago</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>servletProducto</servlet-name>
+        <servlet-class>controlador.servletProducto</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>servletLogin</servlet-name>
         <url-pattern>/servletLogin</url-pattern>
@@ -71,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>servletPago</servlet-name>
         <url-pattern>/pagar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>servletProducto</servlet-name>
+        <url-pattern>/producto</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -24,6 +24,8 @@ public class ProductoDAO extends Conexion {
 
     private static final String SQL_READALL = "{call Sp_Listar_Producto(?)}";
 
+    private static final String SQL_INSERT = "{call Sp_Agregar_Producto(?,?,?,?,?,?,?)}";
+
     private static final Conexion conexion = Conexion.estado();
 
     public List<Producto> readAll() {
@@ -77,6 +79,29 @@ public class ProductoDAO extends Conexion {
             System.out.println(e.getMessage());
         }
         return producto;
+    }
+
+    public boolean create(Producto producto) {
+        PreparedStatement pre;
+        try {
+            pre = conexion.getConnection().prepareCall(SQL_INSERT);
+            pre.setString(1, producto.getNombre());
+            pre.setString(2, producto.getDescripcion());
+            pre.setInt(3, producto.getPrecio());
+            pre.setString(4, producto.getFoto());
+            pre.setInt(5, producto.getTipo_producto());
+            pre.setInt(6, producto.getId_insumo());
+            pre.setInt(7, producto.getId_receta());
+
+            if (pre.executeUpdate() > 0) {
+                return true;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            conexion.cerrarConexion();
+        }
+        return false;
     }
 
 }
