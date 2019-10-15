@@ -1,0 +1,40 @@
+body {
+    margin-top: 80px;
+    padding-top: 80px;
+    background: #FFAE33;
+}
+
+
+
+#foto{
+    display:block;
+    margin:0 auto 0 auto;
+    width:300px; 
+    height:180px;
+}
+
+.show-cart li {
+    display: flex;
+
+}
+.card {
+    margin: 50px;
+    margin: 10px;
+    margin-bottom: 50px;
+}
+.card-img-top {
+    width: 180px;
+    height: 180px;
+    align-self: center;
+}
+
+#menu{
+    height: 100%;
+    width: 100%;
+    //background-color: red;
+
+}
+
+#titulo-menu {
+    margin: 50px;
+}
