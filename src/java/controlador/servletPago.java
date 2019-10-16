@@ -5,7 +5,9 @@
  */
 package controlador;
 
+import dao.DetalleDAO;
 import dao.PedidoDAO;
+import dto.DetallePedido;
 import dto.Pedido;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -48,23 +50,15 @@ public class servletPago extends HttpServlet {
 
         try {
 
-            String fechaEntrada = request.getParameter("txtFecha");
-            SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
-            java.util.Date formato = f.parse(fechaEntrada);
-            java.sql.Date fecha = new java.sql.Date(formato.getDate());
+            int cantidad = Integer.parseInt(request.getParameter("txtCantidad"));
+            int producto = Integer.parseInt(request.getParameter("txtId"));
 
-            int cantidad = Integer.parseInt(request.getParameter("cantidad"));
-            int total = Integer.parseInt(request.getParameter("total"));
+            DetallePedido detalle = new DetallePedido(cantidad, producto);
+            DetalleDAO dao = new DetalleDAO();
 
-            int estado = Integer.parseInt(request.getParameter("estado"));
-            int producto = Integer.parseInt(request.getParameter("producto"));
-
-            Pedido pedido = new Pedido(fecha, cantidad, total, estado, producto);
-            PedidoDAO dao = new PedidoDAO();
-            
-            if (dao.create(pedido)) {
+            if (dao.create(detalle)) {
                 request.setAttribute("msjOK", "Pedido Generado Correctamente");
-            }else{
+            } else {
                 request.setAttribute("msjNO", "error");
             }
 

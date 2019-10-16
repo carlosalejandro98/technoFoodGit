@@ -93,83 +93,84 @@
             </div><!--/header-bottom-->
         </header><!--/header-->
 
-        <section id="cart_items">
-            <div class="container">
-
-                <div class="table-responsive cart_info" id="cart-container">
-                    <table class="table table-condensed" id="shop-table">
-                        <thead>
-                            <tr class="cart_menu">
-                                <td class="image">Producto</td>
-                                <td class="description"></td>
-                                <td class="price">Precio</td>
-                                <td class="quantity">Cantidad</td>
-                                <td class="total">Total</td>
-                                <td></td>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-
-                            <%                                ControladorProducto cm = new ControladorProducto();
-                                double total = 0;
-                                if (carritos != null) {
-                                    for (Carrito c : carritos) {
-                                        Producto producto = cm.getProductoProducto(c.getIdProducto());
-                                        total += c.getCantidad() * producto.getPrecio();
-                            %>
-
-                            <tr>
-                                <td class="cart_product">
-                                    <a href=""><img src="/technoFood/fotos/<%= producto.getFoto()%>" alt="" style="width: 100px;height: 100px;"></a>
-                                </td>
-                                <td class="cart_description">
-                                    <h4><a href=""></a></h4>
-                                </td>
-                                <td class="cart_price">
-                                    <p>$<%= producto.getPrecio()%></p>
-                                </td>
-                                <td class="cart_quantity">
-                                    <div class="cart_quantity_button">
-
-                                        <input class="cart_quantity_input" type="text" name="quantity" value="<%=c.getCantidad()%>" autocomplete="off" size="2" disabled="">
-
-                                    </div>
-                                </td>
-                                <td class="cart_total">
-                                    <p class="cart_total_price">$<%= Math.round(producto.getPrecio() * c.getCantidad() * 100 / 100)%></p>
-                                </td>
-                                <td class="cart_delete">
-                                    <span id="idmenu" style="display: none;"><%= producto.getId_producto()%></span>
-                                    <a class="cart_quantity_delete" href="" id="borraritem"><i class="fa fa-times"></i></a>
-                                </td>
-                            </tr>
-
-                            <%}
-                                }%>
-
-                        </tbody>
-                    </table>
-                    <%  if (carritos == null) { %>   
-                    <center><h4>No hay Productos</h4></center>
-                        <%}%>
-                </div>
-
-
-            </div>
-        </section> <!--/#cart_items-->
-        
-        
-        
-        
         <form action="pagar" method="POST">
+            <section id="cart_items">
+                <div class="container">
+
+                    <div class="table-responsive cart_info" id="cart-container">
+                        <table class="table table-condensed" id="shop-table">
+                            <thead>
+                                <tr class="cart_menu">
+                                    <td class="image">Producto</td>
+                                    <td class="description"></td>
+                                    <td class="price">Precio</td>
+                                    <td class="quantity">Cantidad</td>
+                                    <td class="total">Total</td>
+                                    <td></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+
+                                <%                                ControladorProducto cm = new ControladorProducto();
+                                    double total = 0;
+                                    if (carritos != null) {
+                                        for (Carrito c : carritos) {
+                                            Producto producto = cm.getProductoProducto(c.getIdProducto());
+                                            total += c.getCantidad() * producto.getPrecio();
+                                %>
+
+                                <tr>
+                                    <td class="cart_product">
+                                        <a href=""><img src="/technoFood/fotos/<%= producto.getFoto()%>" alt="" style="width: 100px;height: 100px;"></a>
+                                    </td>
+                                    <td class="cart_description">
+                                        <h4><a href=""></a></h4>
+                                    </td>
+                                    <td class="cart_price">
+                                        <p>$<%= producto.getPrecio()%></p>
+                                    </td>
+                                    <td class="cart_quantity">
+                                        <div class="cart_quantity_button">
+
+                                            <input class="cart_quantity_input" type="text" name="txtCantidad" value="<%=c.getCantidad()%>" autocomplete="off" size="2" >
+
+                                        </div>
+                                    </td>
+                                    <td class="cart_total">
+                                        <p class="cart_total_price">$<%= Math.round(producto.getPrecio() * c.getCantidad() * 100 / 100)%></p>
+                                    </td>
+                                    <td class="cart_delete">
+                                        <input name="txtId" value="<%= producto.getId_producto()%>" />
+                                        <span id="idmenu" style="display: none;"><%= producto.getId_producto()%></span>
+                                        <a class="cart_quantity_delete" href="" id="borraritem"><i class="fa fa-times"></i></a>
+                                    </td>
+                                </tr>
+
+                                <%}}%>
+
+                            </tbody>
+                        </table>
+                        <%  if (carritos == null) { %>   
+                        <center><h4>No hay Productos</h4></center>
+                            <%}%>
+                    </div>
+
+
+                </div>
+            </section> <!--/#cart_items-->
+
+
+
+
+
             <section id="do_action">
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="total_area">
                                 <ul>
-                                    <input type="date" name="txtFecha" />
+                                    
                                     <li>Sub Total <span id="txtSubTotal">$<%= Math.round(total * 100 / 100)%></span></li>
                                     <li>Impuesto <span>$0</span></li>
                                     <li>Total <span id="txtTotal">$<%= Math.round(total * 100 / 100)%></span></li>
@@ -177,15 +178,19 @@
                                 <center>
                                     <button class="btn btn-default check_out" href="" type="submit" name="btnAccion" value="Agregar">Generar Boucher</button>
                                 </center>
+                                <center>
+                                    ${msjOK}
+                                    ${msjNO}
+                                </center>
                             </div>
                         </div>
                     </div>
                 </div>
             </section><!--/#do_action-->
         </form>
-                                
-                                
-                                
+
+
+
         <footer id="footer"><!--Footer-->
             <div class="footer-top">
                 <div class="container">

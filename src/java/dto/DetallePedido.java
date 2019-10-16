@@ -4,14 +4,17 @@ public class DetallePedido {
 
     private int id_detalle_venta;
     private int cantidad;
-    private Producto producto;
-    private Pedido pedido;
+    private int producto;
 
-    public DetallePedido(int id_detalle_venta, int cantidad, Producto producto, Pedido pedido) {
+    public DetallePedido(int id_detalle_venta, int cantidad, int producto) {
         this.id_detalle_venta = id_detalle_venta;
         this.cantidad = cantidad;
         this.producto = producto;
-        this.pedido = pedido;
+    }
+
+    public DetallePedido(int cantidad, int producto) {
+        this.cantidad = cantidad;
+        this.producto = producto;
     }
 
     public DetallePedido() {
@@ -33,20 +36,12 @@ public class DetallePedido {
         this.cantidad = cantidad;
     }
 
-    public Producto getProducto() {
+    public int getProducto() {
         return producto;
     }
 
-    public void setProducto(Producto producto) {
+    public void setProducto(int producto) {
         this.producto = producto;
-    }
-
-    public Pedido getPedido() {
-        return pedido;
-    }
-
-    public void setPedido(Pedido pedido) {
-        this.pedido = pedido;
     }
 
 }
