@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class servletProducto extends HttpServlet {
 
+    
     //producto
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

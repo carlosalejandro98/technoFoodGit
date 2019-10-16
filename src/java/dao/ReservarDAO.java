@@ -8,7 +8,7 @@ import modelo.Conexion;
 
 public class ReservarDAO implements Metodos<Reserva> {
 
-    private static final String SQL_INSERT = "{call SP_Agregar_Reserva(?,?,?,?,?,?,?,?)}";
+    private static final String SQL_INSERT = "{call Sp_Agregar_Reserva(?,?,?,?,?,?,?,?)}";
     private static final String SQL_DELETE = "{call SP_Eliminar_Reserva(?)}";
 
     private static final Conexion conexion = Conexion.estado();
