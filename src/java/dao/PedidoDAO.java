@@ -12,7 +12,7 @@ import oracle.jdbc.OracleTypes;
 
 public class PedidoDAO {
 
-    private static final String SQL_READALL = "{call Sp_Listar_Pedido(?)}";
+    private static final String SQL_READALL = "{call Sp_Listar_Pedido4(?)}";
     private static final String SQL_INSERT = "{call Sp_Listar_Pedido(?,?,?,?)}";
 
     private static final Conexion conexion = Conexion.estado();
@@ -24,7 +24,7 @@ public class PedidoDAO {
         List<Pedido> lista = new ArrayList<>();
         try {
             pre = conexion.getConnection().prepareStatement(SQL_READALL);
-            String llamarProcedimiento = "{call Sp_Listar_Pedido(?)}";
+            String llamarProcedimiento = "{call Sp_Listar_Pedido4(?)}";
             CallableStatement cs = cn.prepareCall(llamarProcedimiento);
             cs.registerOutParameter(1, OracleTypes.CURSOR);
 
