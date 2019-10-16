@@ -1,27 +1,45 @@
 package dao;
 
 import Interface.Metodos;
+import controlador.servletPago;
+import dto.Carrito;
 import dto.DetallePedido;
 import java.sql.PreparedStatement;
+import java.util.ArrayList;
 import java.util.List;
 import modelo.Conexion;
 
 public class DetalleDAO implements Metodos<DetallePedido> {
 
-    private static final String SQL_INSERT = "{call Sp_Agregar_Detalle_Pedido(?,?)}";
+    private ArrayList<Carrito> carro;
+
+    public ArrayList<Carrito> getCarro() {
+        return carro;
+    }
+
+    public void setCarro(ArrayList<Carrito> carro) {
+        this.carro = carro;
+    }
+
+    private static final String SQL_INSERT = "{call Sp_Agregar_Detalle_Pedido(?,?,?)}";
 
     private static final Conexion conexion = Conexion.estado();
 
     @Override
     public boolean create(DetallePedido generico) {
         PreparedStatement pre;
+
         try {
             pre = conexion.getConnection().prepareCall(SQL_INSERT);
-            pre.setInt(1, generico.getCantidad());
-            pre.setInt(2, generico.getProducto());
 
-            if (pre.executeUpdate() > 0) {
-                return true;
+            for (Carrito carro1 : carro) {
+                pre.setInt(1, generico.getCantidad());
+                pre.setInt(2, generico.getProducto());
+                pre.setInt(3, generico.getId_mesa());
+
+                if (pre.executeUpdate() > 0) {
+                    return true;
+                }
             }
 
         } catch (Exception e) {

@@ -7,16 +7,19 @@ package controlador;
 
 import dao.DetalleDAO;
 import dao.PedidoDAO;
+import dto.Carrito;
 import dto.DetallePedido;
 import dto.Pedido;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -52,14 +55,21 @@ public class servletPago extends HttpServlet {
 
             int cantidad = Integer.parseInt(request.getParameter("txtCantidad"));
             int producto = Integer.parseInt(request.getParameter("txtId"));
+            int mesa = Integer.parseInt(request.getParameter("cboMesa"));
 
-            DetallePedido detalle = new DetallePedido(cantidad, producto);
+            HttpSession sesion = request.getSession(true);
+            ArrayList<Carrito> carritos = sesion.getAttribute("carrito") == null ? null : (ArrayList) sesion.getAttribute("carrito");
+
+            DetallePedido detalle = new DetallePedido(cantidad, producto, mesa);
             DetalleDAO dao = new DetalleDAO();
 
-            if (dao.create(detalle)) {
-                request.setAttribute("msjOK", "Pedido Generado Correctamente");
-            } else {
-                request.setAttribute("msjNO", "error");
+            for (Carrito carrito : carritos) {
+
+                if (dao.create(detalle)) {
+                    request.setAttribute("msjOK", "Pedido Generado Correctamente");
+                } else {
+                    request.setAttribute("msjNO", "error");
+                }
             }
 
         } catch (Exception e) {

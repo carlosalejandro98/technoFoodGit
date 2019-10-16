@@ -1,4 +1,6 @@
-
+<%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page import="dto.Producto"%>
 <%@page import="controlador.ControladorProducto"%>
 <%@page import="dto.Carrito"%>
@@ -38,6 +40,12 @@
     </head><!--/head-->
 
     <body>
+
+        <sql:setDataSource var="dataSource" driver="oracle.jdbc.OracleDriver" url="jdbc:oracle:thin:@localhost:1521:XE" user="technoFood" password="admin"></sql:setDataSource>
+
+        <sql:query dataSource="${dataSource}" var="mesa">
+            SELECT id_mesa FROM mesa WHERE estado = 'Disponible'
+        </sql:query>
         <header id="header"><!--header-->
             <div class="header_top"><!--header_top-->
                 <div class="container">
@@ -141,13 +149,14 @@
                                         <p class="cart_total_price">$<%= Math.round(producto.getPrecio() * c.getCantidad() * 100 / 100)%></p>
                                     </td>
                                     <td class="cart_delete">
-                                        <input name="txtId" value="<%= producto.getId_producto()%>" />
+                                        <input name="txtId" value="<%= producto.getId_producto()%>" hidden="" />
                                         <span id="idmenu" style="display: none;"><%= producto.getId_producto()%></span>
                                         <a class="cart_quantity_delete" href="" id="borraritem"><i class="fa fa-times"></i></a>
                                     </td>
                                 </tr>
 
-                                <%}}%>
+                                <%}
+                                    }%>
 
                             </tbody>
                         </table>
@@ -167,16 +176,32 @@
             <section id="do_action">
                 <div class="container">
                     <div class="row">
+
+                        <div class="col-sm-6">
+                            
+                                <h1 style="color:#F2BA31;">Importante</h1>
+                                <h4 style="font-weight: bolder;">Para Finalizar el pedido, debe seleccionar la mesa en la cual va a ir el pedido.</h4>
+                            
+                        </div>
+
+
                         <div class="col-sm-6">
                             <div class="total_area">
                                 <ul>
-                                    
+                                    <h4 style="font-weight: bolder;">Seleccione la Mesa del Pedido</h4>
+                                    <select name="cboMesa">
+                                        <option value="hide">Mesa</option>
+                                        <c:forEach var="mesas" items="${mesa.rows}">
+                                            <option value="${mesas.id_mesa}">${mesas.id_mesa}</option>
+                                        </c:forEach>
+                                    </select>
+
                                     <li>Sub Total <span id="txtSubTotal">$<%= Math.round(total * 100 / 100)%></span></li>
                                     <li>Impuesto <span>$0</span></li>
                                     <li>Total <span id="txtTotal">$<%= Math.round(total * 100 / 100)%></span></li>
                                 </ul>
                                 <center>
-                                    <button class="btn btn-default check_out" href="" type="submit" name="btnAccion" value="Agregar">Generar Boucher</button>
+                                    <button class="btn btn-default check_out" href="" type="submit" name="btnAccion" value="Agregar">Agregar Pedido</button>
                                 </center>
                                 <center>
                                     ${msjOK}

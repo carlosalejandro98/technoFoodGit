@@ -10,6 +10,7 @@ package dto;
  * @author Carlitos
  */
 public class Producto {
+
     private int id_producto;
     private String nombre;
     private String descripcion;
@@ -18,7 +19,6 @@ public class Producto {
     private int tipo_producto;
     private int id_insumo;
     private int id_receta;
-    private byte[] fotoS;
 
     public Producto() {
     }
@@ -33,20 +33,6 @@ public class Producto {
         this.id_receta = id_receta;
     }
 
-    public Producto(String nombre, String descripcion, int precio, int tipo_producto, int id_insumo, int id_receta, byte[] fotoS) {
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.precio = precio;
-        this.tipo_producto = tipo_producto;
-        this.id_insumo = id_insumo;
-        this.id_receta = id_receta;
-        this.fotoS = fotoS;
-    }
-
-    
-   
-    
-    
     public Producto(int id_producto, String nombre, String descripcion, int precio, String foto, int tipo_producto, int id_insumo, int id_receta) {
         this.id_producto = id_producto;
         this.nombre = nombre;
@@ -129,15 +115,5 @@ public class Producto {
     public void setId_receta(int id_receta) {
         this.id_receta = id_receta;
     }
-    
-     public byte[] getFotoS() {
-        return fotoS;
-    }
 
-    public void setFotoS(byte[] fotoS) {
-        this.fotoS = fotoS;
-    }
-
-    
-    
 }

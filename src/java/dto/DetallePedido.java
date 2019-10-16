@@ -5,16 +5,12 @@ public class DetallePedido {
     private int id_detalle_venta;
     private int cantidad;
     private int producto;
+    private int id_mesa;
 
-    public DetallePedido(int id_detalle_venta, int cantidad, int producto) {
-        this.id_detalle_venta = id_detalle_venta;
+    public DetallePedido(int cantidad, int producto, int id_mesa) {
         this.cantidad = cantidad;
         this.producto = producto;
-    }
-
-    public DetallePedido(int cantidad, int producto) {
-        this.cantidad = cantidad;
-        this.producto = producto;
+        this.id_mesa = id_mesa;
     }
 
     public DetallePedido() {
@@ -42,6 +38,14 @@ public class DetallePedido {
 
     public void setProducto(int producto) {
         this.producto = producto;
+    }
+
+    public int getId_mesa() {
+        return id_mesa;
+    }
+
+    public void setId_mesa(int id_mesa) {
+        this.id_mesa = id_mesa;
     }
 
 }
