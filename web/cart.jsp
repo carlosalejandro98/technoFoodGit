@@ -123,9 +123,12 @@
                                 <%                                ControladorProducto cm = new ControladorProducto();
                                     double total = 0;
                                     if (carritos != null) {
+                                        int x = 0;
                                         for (Carrito c : carritos) {
                                             Producto producto = cm.getProductoProducto(c.getIdProducto());
                                             total += c.getCantidad() * producto.getPrecio();
+                                            x++;
+
                                 %>
 
                                 <tr>
@@ -140,8 +143,7 @@
                                     </td>
                                     <td class="cart_quantity">
                                         <div class="cart_quantity_button">
-
-                                            <input class="cart_quantity_input" type="text" name="txtCantidad" value="<%=c.getCantidad()%>" autocomplete="off" size="2" >
+                                            <input class="cart_quantity_input" type="text" name="txtCantidad<%=x%>" value="<%=c.getCantidad()%>" autocomplete="off" size="2" >
                                             <input type="text" name="txtEstado" value="1" hidden=""/>
                                         </div>
                                     </td>
@@ -149,7 +151,7 @@
                                         <p class="cart_total_price">$<%= Math.round(producto.getPrecio() * c.getCantidad() * 100 / 100)%></p>
                                     </td>
                                     <td class="cart_delete">
-                                        <input name="txtId" value="<%= producto.getId_producto()%>" hidden="" />
+                                        <input name="txtId<%=x%>" value="<%= producto.getId_producto()%>" hidden="" />
                                         <span id="idmenu" style="display: none;"><%= producto.getId_producto()%></span>
                                         <a class="cart_quantity_delete" href="" id="borraritem"><i class="fa fa-times"></i></a>
                                     </td>

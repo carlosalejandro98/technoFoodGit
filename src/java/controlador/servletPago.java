@@ -52,16 +52,12 @@ public class servletPago extends HttpServlet {
             throws ServletException, IOException {
 
         try {
-
+            
+            
             int cantidad = Integer.parseInt(request.getParameter("txtCantidad"));
             int producto = Integer.parseInt(request.getParameter("txtId"));
             int mesa = Integer.parseInt(request.getParameter("cboMesa"));
             int estado = Integer.parseInt(request.getParameter("txtEstado"));
-
-            System.out.println(cantidad);
-            System.out.println(producto);
-            System.out.println(mesa);
-            System.out.println(estado);
 
             HttpSession sesion = request.getSession(true);
             ArrayList<Carrito> carritos = sesion.getAttribute("carrito") == null ? null : (ArrayList) sesion.getAttribute("carrito");
