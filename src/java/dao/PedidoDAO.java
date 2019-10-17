@@ -1,5 +1,6 @@
 package dao;
 
+import dto.DetallePedido;
 import dto.Pedido;
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -12,19 +13,19 @@ import oracle.jdbc.OracleTypes;
 
 public class PedidoDAO {
 
-    private static final String SQL_READALL = "{call Sp_Listar_Pedido4(?)}";
+    private static final String SQL_READALL = "{call Sp_Listar_Detalle_Pedido(?)}";
     private static final String SQL_INSERT = "{call Sp_Listar_Pedido(?,?,?,?)}";
 
     private static final Conexion conexion = Conexion.estado();
 
-    public List<Pedido> readAll() {
+    public List<DetallePedido> readAll() {
         PreparedStatement pre;
         CallableStatement cstmt;
         Connection cn = conexion.getConnection();
-        List<Pedido> lista = new ArrayList<>();
+        List<DetallePedido> lista = new ArrayList<>();
         try {
             pre = conexion.getConnection().prepareStatement(SQL_READALL);
-            String llamarProcedimiento = "{call Sp_Listar_Pedido4(?)}";
+            String llamarProcedimiento = "{call Sp_Listar_Detalle_Pedido(?)}";
             CallableStatement cs = cn.prepareCall(llamarProcedimiento);
             cs.registerOutParameter(1, OracleTypes.CURSOR);
 
@@ -33,15 +34,16 @@ public class PedidoDAO {
             ResultSet rs = (ResultSet) cs.getObject(1);
 
             while (rs.next()) {
-                Pedido pedido = new Pedido();
-                pedido.setId_pedido(rs.getInt("id_pedido"));
-                pedido.setCantidad(rs.getInt("cantidad"));
-                pedido.setProducto(rs.getString("nombre"));
-                pedido.setTipo(rs.getString("tipo_producto"));
-                pedido.setId_mesa(rs.getInt("id_mesa"));
-                pedido.setEstado(rs.getString("estado_pedido"));
-
-                lista.add(pedido);
+                DetallePedido detalle = new DetallePedido();
+                detalle.setId_detalle_venta(rs.getInt("id_det_pedido"));
+                detalle.setNombre_producto(rs.getString("nombre"));
+                detalle.setCantidad(rs.getInt("cantidad"));
+                detalle.setTipo_producto(rs.getString("tipo_producto"));
+                detalle.setId_mesa(rs.getInt("id_mesa"));
+                detalle.setEstado_pedido(rs.getString("estado_pedido"));
+                
+                
+                lista.add(detalle);
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());

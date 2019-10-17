@@ -11,17 +11,16 @@ import modelo.Conexion;
 
 public class DetalleDAO implements Metodos<DetallePedido> {
 
-    private ArrayList<Carrito> carro;
-
-    public ArrayList<Carrito> getCarro() {
-        return carro;
-    }
-
-    public void setCarro(ArrayList<Carrito> carro) {
-        this.carro = carro;
-    }
-
-    private static final String SQL_INSERT = "{call Sp_Agregar_Detalle_Pedido(?,?,?)}";
+    /* private ArrayList<Carrito> carro;
+    
+     public ArrayList<Carrito> getCarro() {
+     return carro;
+     }
+    
+     public void setCarro(ArrayList<Carrito> carro) {
+     this.carro = carro;
+     }*/
+    private static final String SQL_INSERT = "{call Sp_Agregar_Detalle_Pedido(?,?,?,?)}";
 
     private static final Conexion conexion = Conexion.estado();
 
@@ -32,15 +31,16 @@ public class DetalleDAO implements Metodos<DetallePedido> {
         try {
             pre = conexion.getConnection().prepareCall(SQL_INSERT);
 
-            for (Carrito carro1 : carro) {
-                pre.setInt(1, generico.getCantidad());
-                pre.setInt(2, generico.getProducto());
-                pre.setInt(3, generico.getId_mesa());
+            //for (Carrito carro1 : carro) {
+            pre.setInt(1, generico.getCantidad());
+            pre.setInt(2, generico.getProducto());
+            pre.setInt(3, generico.getId_mesa());
+            pre.setInt(4, generico.getId_estado());
 
-                if (pre.executeUpdate() > 0) {
-                    return true;
-                }
+            if (pre.executeUpdate() > 0) {
+                return true;
             }
+           // }
 
         } catch (Exception e) {
             System.out.println(e.getMessage());

@@ -38,18 +38,18 @@
                             <div class="thumbnail">
                                 <img class="group list-group-image" src="img/logoPedidos.png" alt="" />
                                 <div class="caption">
-                                    <h2 class="group inner list-group-item-heading">Pedido Numero: ${aux.getId_pedido()}</h2>
+                                    <h2 class="group inner list-group-item-heading">Pedido Numero: ${aux.getId_detalle_venta()}</h2>
                                     <p class="group inner list-group-item-text">
 
-                                        Nombre del Pedido: ${aux.getProducto()}
+                                        Nombre del Pedido: ${aux.getNombre_producto()}
                                         <br>
-                                        Tipo de Producto : ${aux.getTipo()}
+                                        Tipo de Producto : ${aux.getTipo_producto()}
                                         <br>
                                         Mesa: ${aux.getId_mesa()}
                                         <br>
                                         cantidad: ${aux.getCantidad()}
                                         <br>
-                                        estado: ${aux.getEstado()}
+                                        estado: ${aux.getEstado_pedido()}
 
 
                                     </p>

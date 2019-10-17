@@ -56,11 +56,17 @@ public class servletPago extends HttpServlet {
             int cantidad = Integer.parseInt(request.getParameter("txtCantidad"));
             int producto = Integer.parseInt(request.getParameter("txtId"));
             int mesa = Integer.parseInt(request.getParameter("cboMesa"));
+            int estado = Integer.parseInt(request.getParameter("txtEstado"));
+
+            System.out.println(cantidad);
+            System.out.println(producto);
+            System.out.println(mesa);
+            System.out.println(estado);
 
             HttpSession sesion = request.getSession(true);
             ArrayList<Carrito> carritos = sesion.getAttribute("carrito") == null ? null : (ArrayList) sesion.getAttribute("carrito");
 
-            DetallePedido detalle = new DetallePedido(cantidad, producto, mesa);
+            DetallePedido detalle = new DetallePedido(cantidad, producto, mesa, estado);
             DetalleDAO dao = new DetalleDAO();
 
             for (Carrito carrito : carritos) {

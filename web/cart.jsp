@@ -142,7 +142,7 @@
                                         <div class="cart_quantity_button">
 
                                             <input class="cart_quantity_input" type="text" name="txtCantidad" value="<%=c.getCantidad()%>" autocomplete="off" size="2" >
-
+                                            <input type="text" name="txtEstado" value="1" hidden=""/>
                                         </div>
                                     </td>
                                     <td class="cart_total">
@@ -178,10 +178,10 @@
                     <div class="row">
 
                         <div class="col-sm-6">
-                            
-                                <h1 style="color:#F2BA31;">Importante</h1>
-                                <h4 style="font-weight: bolder;">Para Finalizar el pedido, debe seleccionar la mesa en la cual va a ir el pedido.</h4>
-                            
+
+                            <h1 style="color:#F2BA31;">Importante</h1>
+                            <h4 style="font-weight: bolder;">Para Finalizar el pedido, debe seleccionar la mesa en la cual va a ir el pedido.</h4>
+
                         </div>
 
 

@@ -6,6 +6,7 @@
 package controlador;
 
 import dao.PedidoDAO;
+import dto.DetallePedido;
 import dto.Pedido;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -38,26 +39,25 @@ public class servletPedido extends HttpServlet {
         if (opciones.equals("Actualizar")) {
             listar(request, response);
         }
-        
+
     }
 
     protected void listar(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         PedidoDAO dao = new PedidoDAO();
-        List<Pedido> pedido;
+        List<DetallePedido> detalle;
 
-        pedido = dao.readAll();
+        detalle = dao.readAll();
         //PLATO
         // Creamos una variable llamada listaMesa con el contenido de readAll(todos los datos de la BD)
-        request.setAttribute("listaPedido", pedido);
+        request.setAttribute("listaPedido", detalle);
 
         // Envias la variable a la vista mesa.jsp
         request.getRequestDispatcher("cocina.jsp").forward(request, response);
 
     }
 
-   
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
