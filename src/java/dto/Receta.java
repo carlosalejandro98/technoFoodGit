@@ -1,10 +1,10 @@
-
 package dto;
 
+import java.io.InputStream;
 import java.sql.Date;
 
-
 public class Receta {
+
     private int id_receta;
     private String foto;
     private String nombre_receta;
@@ -12,7 +12,7 @@ public class Receta {
     private Date fecha;
     private String ingredientes;
     private String descripcion;
-    
+    private InputStream fotoS;
 
     public Receta() {
     }
@@ -35,8 +35,15 @@ public class Receta {
         this.ingredientes = ingredientes;
         this.descripcion = descripcion;
     }
-    
-    
+
+    public Receta(String nombre_receta, String autor, Date fecha, String ingredientes, String descripcion, InputStream fotoS) {
+        this.nombre_receta = nombre_receta;
+        this.autor = autor;
+        this.fecha = fecha;
+        this.ingredientes = ingredientes;
+        this.descripcion = descripcion;
+        this.fotoS = fotoS;
+    }
 
     public int getId_receta() {
         return id_receta;
@@ -94,6 +101,12 @@ public class Receta {
         this.descripcion = descripcion;
     }
 
-   
-    
+    public InputStream getFotoS() {
+        return fotoS;
+    }
+
+    public void setFotoS(InputStream fotoS) {
+        this.fotoS = fotoS;
+    }
+
 }

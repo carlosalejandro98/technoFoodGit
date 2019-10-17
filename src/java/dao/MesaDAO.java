@@ -19,6 +19,7 @@ public class MesaDAO {
 
     private static final String SQL_READALL = "{call Sp_Listar_Mesa(?)}";
     private static final String SQL_UPDATE = "{call Sp_Modificar_Mesa2(?)}";
+    private static final String SQL_UPDATE_OCUPADO = "{call Sp_Modificar_Mesa_Ocupada(?)}";
 
     private static final Conexion conexion = Conexion.estado();
 
@@ -58,6 +59,24 @@ public class MesaDAO {
         PreparedStatement pre;
         try {
             pre = conexion.getConnection().prepareCall(SQL_UPDATE);
+            pre.setInt(1, generico.getId_mesa());
+            
+            if (pre.executeUpdate() > 0) {
+                return true;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }finally{
+            conexion.cerrarConexion();
+        }
+        return false;
+    }
+    
+    
+     public boolean updateOcupado(Mesa generico){
+        PreparedStatement pre;
+        try {
+            pre = conexion.getConnection().prepareCall(SQL_UPDATE_OCUPADO);
             pre.setInt(1, generico.getId_mesa());
             
             if (pre.executeUpdate() > 0) {

@@ -21,10 +21,10 @@
                 <a href="mesa.jsp">
                     <div class="flip">
                         <div class="front" style="background-image: url(img/mesa.jpg)">
-                            <h1 class="text-shadow">Asignar Mesa</h1>
+                            <h1 class="text-shadow">Disponibilidad de Mesa</h1>
                         </div>
                         <div class="back">
-                            <h2>Seleccionar la mesa del cliente.</h2>
+                            <h2>Cambiar estados de Mesas.</h2>
                         </div>
                     </div>
                 </a>

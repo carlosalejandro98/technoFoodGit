@@ -43,6 +43,9 @@ public class servletMesa extends HttpServlet {
         if (opciones.equals("Reservar")) {
             reservar(request, response);
         }
+        if (opciones.equals("Liberar")) {
+            liberar(request,response);
+        }
 
     }
 
@@ -86,6 +89,30 @@ public class servletMesa extends HttpServlet {
 
     }
 
+    
+     protected void liberar(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        try {
+            int id_mesa = Integer.parseInt(request.getParameter("txtIdMesa"));
+
+            System.out.println(id_mesa);
+            
+            Mesa mesa = new Mesa(id_mesa);
+            MesaDAO dao = new MesaDAO();
+
+            if (dao.updateOcupado(mesa)) {
+                request.setAttribute("msjOK", "Mesa Liberada Correctamente");
+            } else {
+                request.setAttribute("msjNO", "Error al Reservar Mesa");
+            }
+        } catch (Exception e) {
+            request.setAttribute("msjNO", "Error: "+e.getMessage());
+        }finally{
+            response.sendRedirect("mesa.jsp");
+        }
+
+    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

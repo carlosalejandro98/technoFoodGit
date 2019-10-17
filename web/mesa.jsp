@@ -31,22 +31,25 @@
                     <c:forEach var="aux" items="${listaMesa}">
                         <li class="pricingTable-firstTable_table">
                             <h1 class="pricingTable-firstTable_table__header">Mesa ${aux.getId_mesa()}</h1>
-                            <input type="hidden" value="${aux.getId_mesa()}" name="txtIdMesa" />
+                            <input type="number" value="${aux.getId_mesa()}" name="txtIdMesa" hidden=""/>
                             <p class="pricingTable-firstTable_table__pricing"><span></span><span>${aux.getAsientos()}</span><span>Asientos</span></p>
-                            <p>${msjOK}</p>
-                            <p>${msjNO}</p>
+
                             <c:if test="${aux.getEstado_mesa() == 'Disponible'}">
                                 <button class="pricingTable-firstTable_table__getstart" type="submit" name="btnAccion" value="Reservar">Reservar</button>
                             </c:if>
 
                             <c:if test="${aux.getEstado_mesa() == 'No Disponible'}">
-                                <button class="pricingTable-firstTable_table__getstart" disabled="" style="background-color: red;">Ocupada</button>
+                                <button class="pricingTable-firstTable_table__getstart" name="btnAccion" value="Liberar" style="background-color: red;">Ocupada</button>
                             </c:if>
 
                         </li>
                     </c:forEach>
                 </ul>
             </div>
+            <center>
+                <p>${msjOK}</p>
+                <p>${msjNO}</p>
+            </center>
         </form>
 
 
