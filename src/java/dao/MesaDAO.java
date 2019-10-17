@@ -23,7 +23,6 @@ public class MesaDAO {
 
     private static final Conexion conexion = Conexion.estado();
 
-
     public List<Mesa> readAll() {
         PreparedStatement pre;
         CallableStatement cstmt;
@@ -54,41 +53,39 @@ public class MesaDAO {
             return lista;
         }
     }
-    
-    public boolean update(Mesa generico){
+
+    public boolean update(Mesa generico) {
         PreparedStatement pre;
         try {
             pre = conexion.getConnection().prepareCall(SQL_UPDATE);
             pre.setInt(1, generico.getId_mesa());
-            
+
             if (pre.executeUpdate() > 0) {
                 return true;
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
-        }finally{
+        } finally {
             conexion.cerrarConexion();
         }
         return false;
     }
-    
-    
-     public boolean updateOcupado(Mesa generico){
+
+    public boolean updateOcupado(Mesa generico) {
         PreparedStatement pre;
         try {
             pre = conexion.getConnection().prepareCall(SQL_UPDATE_OCUPADO);
             pre.setInt(1, generico.getId_mesa());
-            
+
             if (pre.executeUpdate() > 0) {
                 return true;
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
-        }finally{
+        } finally {
             conexion.cerrarConexion();
         }
         return false;
     }
-    
-  
+
 }
