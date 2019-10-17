@@ -87,7 +87,7 @@ public class RecetaDAO implements Metodos<Receta> {
         List<Receta> lista = new ArrayList<>();
         try {
             pre = conexion.getConnection().prepareStatement(SQL_READALL);
-            String llamarProcedimiento = "{call sp_listarReceta(?)}";
+            String llamarProcedimiento = "{call Sp_Listar_Receta(?)}";
             CallableStatement cs = cn.prepareCall(llamarProcedimiento);
             cs.registerOutParameter(1, OracleTypes.CURSOR);
 
