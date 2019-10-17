@@ -82,7 +82,8 @@
                         </div>
 
                         <div class="wrap-input100 validate-input" >
-                            <input class="input100" type="text" name="txtFecha" value="<%=dateFormat.format(date)%>" placeholder="<%=dateFormat.format(date)%>" disabled="">
+                            <input class="input100" type="date" value="<%=dateFormat.format(date)%>" placeholder="<%=dateFormat.format(date)%>" disabled="" />
+                            <input class="input100" type="hidden" name="txtFecha" value="<%=dateFormat.format(date)%>" placeholder="<%=dateFormat.format(date)%>" />
                             <span class="focus-input100"></span>
                             <span class="symbol-input100">
                                 <!--<i class="fa fa-user" aria-hidden="true"></i>-->
