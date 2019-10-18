@@ -123,11 +123,11 @@
                                 <%                                ControladorProducto cm = new ControladorProducto();
                                     double total = 0;
                                     if (carritos != null) {
-                                        int x = 0;
+                                        int x = 0;  
                                         for (Carrito c : carritos) {
                                             Producto producto = cm.getProductoProducto(c.getIdProducto());
                                             total += c.getCantidad() * producto.getPrecio();
-                                            x++;
+                                         x++; 
 
                                 %>
 
