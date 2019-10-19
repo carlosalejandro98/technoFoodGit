@@ -12,8 +12,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import modelo.Conexion;
 
-
-
 /**
  *
  * @author Carlitos
@@ -28,8 +26,8 @@ public class UsuarioDAO implements Validar {
 
     @Override
     public int validar(Usuario u) {
-        int r =0;
-        String sql = "select usuario, contrasena, nombre, apellido, id_tipo from usuario inner join tipo_usuario on usuario.tipo_usuario_id_tipo = tipo_usuario.id_tipo where usuario=? and contrasena=?";
+        int r = 0;
+        String sql = "select id_usuario, usuario, contrasena, nombre, apellido, id_tipo from usuario inner join tipo_usuario on usuario.tipo_usuario_id_tipo = tipo_usuario.id_tipo where usuario=? and contrasena=?";
         try {
             con = c.getConnection();
             ps = con.prepareStatement(sql);
@@ -38,6 +36,7 @@ public class UsuarioDAO implements Validar {
             rs = ps.executeQuery();
             while (rs.next()) {
                 r = r + 1;
+                u.setId(rs.getInt("id_usuario"));
                 u.setUsuario(rs.getString("usuario"));
                 u.setContrasena(rs.getString("contrasena"));
                 u.setNombre(rs.getString("nombre"));

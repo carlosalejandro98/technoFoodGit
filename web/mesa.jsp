@@ -27,8 +27,11 @@
 
                 <center><input type="submit" name="btnAccion" value="Listar" class="botonListar"/></center>
 
+
+
                 <ul class="pricingTable-firstTable">
                     <c:forEach var="aux" items="${listaMesa}">
+                        
                         <li class="pricingTable-firstTable_table">
                             <h1 class="pricingTable-firstTable_table__header">Mesa ${aux.getId_mesa()}</h1>
                             <input type="number" value="${aux.getId_mesa()}" name="txtIdMesa" hidden=""/>
@@ -43,6 +46,7 @@
                             </c:if>
 
                         </li>
+                       
                     </c:forEach>
                 </ul>
             </div>

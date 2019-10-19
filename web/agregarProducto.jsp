@@ -139,7 +139,7 @@
 
                         <div class="container-contact100-form-btn">
                             <button class="contact100-form-btn" type="submit" name="btnAccion" value="Agregar">
-                                Ingresar Receta
+                                Ingresar Producto
                             </button>
                         </div>
 

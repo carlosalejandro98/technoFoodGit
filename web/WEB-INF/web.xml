@@ -40,6 +40,10 @@
         <servlet-name>servletProducto</servlet-name>
         <servlet-class>controlador.servletProducto</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>servletCerrarSesion</servlet-name>
+        <servlet-class>controlador.servletCerrarSesion</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>servletLogin</servlet-name>
         <url-pattern>/servletLogin</url-pattern>
@@ -79,6 +83,10 @@
     <servlet-mapping>
         <servlet-name>servletProducto</servlet-name>
         <url-pattern>/producto</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>servletCerrarSesion</servlet-name>
+        <url-pattern>/cerrarSesion</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

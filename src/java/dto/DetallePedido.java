@@ -10,6 +10,7 @@ public class DetallePedido {
     private String nombre_producto;
     private String tipo_producto;
     private String estado_pedido;
+    private int id_pedido;
 
     public DetallePedido(int cantidad, int producto, int id_mesa, int id_estado) {
         this.cantidad = cantidad;
@@ -17,6 +18,16 @@ public class DetallePedido {
         this.id_mesa = id_mesa;
         this.id_estado = id_estado;
     }
+
+    public DetallePedido(int cantidad, int producto, int id_mesa, int id_estado, int id_pedido) {
+        this.cantidad = cantidad;
+        this.producto = producto;
+        this.id_mesa = id_mesa;
+        this.id_estado = id_estado;
+        this.id_pedido = id_pedido;
+    }
+    
+    
 
     public DetallePedido(int id_detalle_venta, int cantidad, int id_mesa, String nombre_producto, String tipo_producto, String estado_pedido) {
         this.id_detalle_venta = id_detalle_venta;
@@ -92,6 +103,14 @@ public class DetallePedido {
 
     public void setEstado_pedido(String estado_pedido) {
         this.estado_pedido = estado_pedido;
+    }
+
+    public int getId_pedido() {
+        return id_pedido;
+    }
+
+    public void setId_pedido(int id_pedido) {
+        this.id_pedido = id_pedido;
     }
     
     

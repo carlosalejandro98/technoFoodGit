@@ -26,6 +26,13 @@ public class Pedido {
         this.id_estado = id_estado;
         this.id_producto = id_producto;
     }
+
+    public Pedido(Date fecha, int total, int id_usuario) {
+        this.fecha = fecha;
+        this.total = total;
+        this.id_usuario = id_usuario;
+    }
+    
     
     
 

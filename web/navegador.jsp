@@ -10,7 +10,7 @@
     <body>
         <%
             HttpSession session1 = request.getSession();
-            if (session1.getAttribute("nombre") == null) {
+            if (session1.getAttribute("sesion") == null) {
                 response.sendRedirect("404.jsp");
             }
         %>
@@ -85,7 +85,7 @@
                 
               
 
-                <a href="index.jsp">
+                <a href="cerrarSesion">
                     <div class="flip flip-vertical">
                         <div class="front" style="background-image: url(img/salir.jpg)">
                             <h1 class="text-shadow">Salir</h1>
@@ -110,7 +110,7 @@
                     </div>
                 </a>
 
-                <a href="venta.jsp">
+                <a href="shop.jsp">
                     <div class="flip flip-vertical">
                         <div class="front" style="background-image: url(img/tomarPedido.jpg)">
                             <h1 class="text-shadow">Ingresar Orden</h1>
@@ -121,7 +121,7 @@
                     </div>
                 </a>
 
-                <a href="index.jsp">
+                <a href="cerrarSesion">
                     <div class="flip flip-vertical">
                         <div class="front" style="background-image: url(img/salir.jpg)">
                             <h1 class="text-shadow">Salir</h1>
@@ -167,7 +167,7 @@
                     </div>
                 </a>
                 
-                <a href="index.jsp">
+                <a href="cerrarSesion">
                     <div class="flip flip-vertical">
                         <div class="front" style="background-image: url(img/salir.jpg)">
                             <h1 class="text-shadow">Salir</h1>

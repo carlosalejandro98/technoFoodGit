@@ -5,8 +5,6 @@
  */
 package controlador;
 
-import dao.UsuarioDAO;
-import dto.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -19,8 +17,9 @@ import javax.servlet.http.HttpSession;
  *
  * @author Carlitos
  */
-public class servletLogin extends HttpServlet {
+public class servletCerrarSesion extends HttpServlet {
 
+    //cerrarSesion
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -33,31 +32,9 @@ public class servletLogin extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String accion = request.getParameter("btnAccion");
-        if (accion.equals("Ingresar")) {
-            String usu = request.getParameter("txtUsuario");
-            String pass = request.getParameter("txtContrasena");
-
-            UsuarioDAO dao = new UsuarioDAO();
-            Usuario u = new Usuario();
-            int r;
-
-            u.setUsuario(usu);
-            u.setContrasena(pass);
-            r = dao.validar(u);
-            if (r == 1) {
-                request.getSession().setAttribute("usuario", u.getId());
-                request.getSession().setAttribute("sesion", u);
-                request.getSession().setAttribute("nombre", u.getNombre());
-                request.getSession().setAttribute("apellido", u.getApellido());
-                request.getSession().setAttribute("usu", u.getTipo_usuario());
-                request.getRequestDispatcher("navegador.jsp").forward(request, response);
-            } else {
-                request.setAttribute("msjOK", "Usuario o Contraseña incorrecta");
-                request.getRequestDispatcher("login.jsp").forward(request, response);
-            }
-        }
-
+        HttpSession session = request.getSession();
+        session.removeAttribute("sesion");
+        request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

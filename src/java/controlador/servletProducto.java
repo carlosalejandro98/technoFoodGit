@@ -20,7 +20,6 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class servletProducto extends HttpServlet {
 
-    
     //producto
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -54,6 +53,14 @@ public class servletProducto extends HttpServlet {
             int tipo = Integer.parseInt(request.getParameter("cboTipoProducto"));
             int insumo = Integer.parseInt(request.getParameter("cboInsumo"));
             int receta = Integer.parseInt(request.getParameter("cboReceta"));
+
+            System.out.println(nombre);
+            System.out.println(descripcion);
+            System.out.println(precio);
+            System.out.println(foto);
+            System.out.println(tipo);
+            System.out.println(insumo);
+            System.out.println(receta);
 
             Producto producto = new Producto(nombre, descripcion, precio, foto, tipo, insumo, receta);
             ProductoDAO dao = new ProductoDAO();

@@ -1,6 +1,9 @@
 <%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="java.text.DateFormat"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@page import="dto.Producto"%>
 <%@page import="controlador.ControladorProducto"%>
 <%@page import="dto.Carrito"%>
@@ -12,6 +15,8 @@
 
 
 %>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,6 +45,19 @@
     </head><!--/head-->
 
     <body>
+
+        <%
+            HttpSession session1 = request.getSession();
+            if (session1.getAttribute("sesion") == null) {
+                response.sendRedirect("404.jsp");
+            }
+        %>
+
+        <%
+            Date date = new Date();
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            System.out.println("Fecha: " + dateFormat.format(date));
+        %>
 
         <sql:setDataSource var="dataSource" driver="oracle.jdbc.OracleDriver" url="jdbc:oracle:thin:@localhost:1521:XE" user="technoFood" password="admin"></sql:setDataSource>
 
@@ -123,11 +141,11 @@
                                 <%                                ControladorProducto cm = new ControladorProducto();
                                     double total = 0;
                                     if (carritos != null) {
-                                        int x = 0;  
+                                        int x = 0;
                                         for (Carrito c : carritos) {
                                             Producto producto = cm.getProductoProducto(c.getIdProducto());
                                             total += c.getCantidad() * producto.getPrecio();
-                                         x++; 
+                                            x++;
 
                                 %>
 
@@ -200,10 +218,17 @@
 
                                     <li>Sub Total <span id="txtSubTotal">$<%= Math.round(total * 100 / 100)%></span></li>
                                     <li>Impuesto <span>$0</span></li>
+                                    
+                                    <input type="number" name="txtPedido" value="1" hidden=""/>
+                                    <input name="txtUsuario" value="${usuario}" hidden=""/>
+                                    <input name="txtTotal" value="<%= Math.round(total * 100 / 100)%>" hidden=""/>
+                                    <input type="date" value="<%=dateFormat.format(date)%>" name="txtFecha" hidden="" />
+                                    
                                     <li>Total <span id="txtTotal">$<%= Math.round(total * 100 / 100)%></span></li>
                                 </ul>
                                 <center>
-                                    <button class="btn btn-default check_out" href="" type="submit" name="btnAccion" value="Agregar">Agregar Pedido</button>
+                                    <button class="btn btn-default check_out" href="" type="submit" name="btnAccion" value="Generar">Generar Pedido</button>
+                                    <button class="btn btn-default check_out" href="" type="submit" name="btnAccion" value="Agregar">Enviar a Cocina</button>
                                 </center>
                                 <center>
                                     ${msjOK}
