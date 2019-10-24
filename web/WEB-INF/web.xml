@@ -44,6 +44,10 @@
         <servlet-name>servletCerrarSesion</servlet-name>
         <servlet-class>controlador.servletCerrarSesion</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>servletActualizarIngresado</servlet-name>
+        <servlet-class>controlador.servletActualizarIngresado</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>servletLogin</servlet-name>
         <url-pattern>/servletLogin</url-pattern>
@@ -87,6 +91,10 @@
     <servlet-mapping>
         <servlet-name>servletCerrarSesion</servlet-name>
         <url-pattern>/cerrarSesion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>servletActualizarIngresado</servlet-name>
+        <url-pattern>/actualizarIngresado</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

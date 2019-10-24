@@ -15,6 +15,8 @@ public class PedidoDAO {
 
     private static final String SQL_READALL = "{call Sp_Listar_Detalle_Pedido(?)}";
     private static final String SQL_INSERT = "{call Sp_Listar_Pedido(?,?,?,?)}";
+    private static final String SQL_UPDATE_INGRESAR = "{call Sp_Modificar_Estado_Pedido1(?)}";
+    private static final String SQL_UPDATE_EN_PROCESO = "{call Sp_Modificar_Estado_Pedido2(?)}";
 
     private static final Conexion conexion = Conexion.estado();
 
@@ -40,9 +42,8 @@ public class PedidoDAO {
                 detalle.setCantidad(rs.getInt("cantidad"));
                 detalle.setTipo_producto(rs.getString("tipo_producto"));
                 detalle.setId_mesa(rs.getInt("id_mesa"));
-                detalle.setEstado_pedido(rs.getString("estado_pedido"));
-                
-                
+                detalle.setId_estado(rs.getInt("id_est_pe"));
+
                 lista.add(detalle);
             }
         } catch (Exception e) {
@@ -72,9 +73,39 @@ public class PedidoDAO {
         }
         return false;
     }
-    
-    
-    
-    
-   
+
+    public boolean actualizarIngresado(Pedido pedido) {
+        PreparedStatement pre;
+        try {
+            pre = conexion.getConnection().prepareCall(SQL_UPDATE_INGRESAR);
+            pre.setInt(1, pedido.getId_estado());
+
+            if (pre.executeUpdate() > 0) {
+                return true;
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        } finally {
+            conexion.cerrarConexion();
+        }
+        return false;
+    }
+
+    public boolean actualizarEnProceso(Pedido pedido) {
+        PreparedStatement pre;
+        try {
+            pre = conexion.getConnection().prepareCall(SQL_UPDATE_EN_PROCESO);
+            pre.setInt(1, pedido.getId_estado());
+
+            if (pre.executeUpdate() > 0) {
+                return true;
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        } finally {
+            conexion.cerrarConexion();
+        }
+        return false;
+    }
+
 }

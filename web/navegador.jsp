@@ -28,7 +28,7 @@
                         </div>
                     </div>
                 </a>
-                <a href="cocina.jsp">
+                <a href="servletPedido">
                     <div class="flip">
                         <div class="front" style="background-image: url(img/recibirPedido.jpg)">
                             <h1 class="text-shadow">Recibir Pedido</h1>

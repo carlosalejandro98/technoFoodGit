@@ -6,9 +6,11 @@
 package controlador;
 
 import dao.DetalleDAO;
+import dao.MesaDAO;
 import dao.PedidoDAO;
 import dto.Carrito;
 import dto.DetallePedido;
+import dto.Mesa;
 import dto.Pedido;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -59,6 +61,7 @@ public class servletPago extends HttpServlet {
             ArrayList<Carrito> carritos = sesion.getAttribute("carrito") == null ? null : (ArrayList) sesion.getAttribute("carrito");
             int contador = 1;
             
+            MesaDAO daoMesa = new MesaDAO();
             DetalleDAO dao = new DetalleDAO();
             for (Carrito carrito : carritos) {
                 
@@ -70,9 +73,16 @@ public class servletPago extends HttpServlet {
                 int estado = Integer.parseInt(request.getParameter("txtEstado"));
                 int idpedido = Integer.parseInt(request.getParameter("txtPedido"));
                 
+                
                 DetallePedido detalle = new DetallePedido(cantidad, producto, mesa, estado, idpedido);
                 
+                
+                
                 if (dao.create(detalle)) {
+                    
+                    Mesa m = new Mesa(mesa);
+                    daoMesa.update(m);
+                    
                     request.setAttribute("msjOK", "Pedido Generado Correctamente");
                     contador++;
                 } else {

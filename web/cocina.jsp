@@ -39,6 +39,7 @@
                                 <img class="group list-group-image" src="img/logoPedidos.png" alt="" />
                                 <div class="caption">
                                     <h2 class="group inner list-group-item-heading">Pedido Numero: ${aux.getId_detalle_venta()}</h2>
+                                    <input type="number" name="txtId"  hidden="" />
                                     <p class="group inner list-group-item-text">
 
                                         Nombre del Pedido: ${aux.getNombre_producto()}
@@ -49,17 +50,32 @@
                                         <br>
                                         cantidad: ${aux.getCantidad()}
                                         <br>
-                                        estado: ${aux.getEstado_pedido()}
 
 
                                     </p>
+                                    
                                     <div class="row">
                                         <div class="col-xs-12 col-md-6">
                                             <p class="lead"></p>
                                         </div>
-                                        <div class="col-xs-12 col-md-6">
-                                            <a class="btn btn-success">Listo</a>
-                                        </div>
+                                        <c:if test="${aux.getId_estado() == 1}">
+                                            <div class="col-xs-12 col-md-6">
+                                                <input class="btn btn-info btn-lg" value="Ingresado" type="submit" name="btnAccion">
+                                            </div>
+                                        </c:if>
+
+                                        <c:if test="${aux.getId_estado() == 2}">
+                                            <div class="col-xs-12 col-md-6">
+                                                <input class="btn btn-primary btn-lg" value="En Proceso" type="submit" name="btnAccion">
+                                            </div>
+                                        </c:if>
+
+                                        <c:if test="${aux.getId_estado() == 3}">
+                                            <div class="col-xs-12 col-md-6">
+                                                <input class="btn btn-success btn-lg" value="Listo">
+                                            </div>
+                                        </c:if>
+
                                     </div>
                                 </div>
                             </div>

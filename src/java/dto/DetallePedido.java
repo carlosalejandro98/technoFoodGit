@@ -38,6 +38,18 @@ public class DetallePedido {
         this.estado_pedido = estado_pedido;
     }
 
+    public DetallePedido(int id_detalle_venta, int cantidad, int id_mesa, int id_estado, String nombre_producto, String tipo_producto) {
+        this.id_detalle_venta = id_detalle_venta;
+        this.cantidad = cantidad;
+        this.id_mesa = id_mesa;
+        this.id_estado = id_estado;
+        this.nombre_producto = nombre_producto;
+        this.tipo_producto = tipo_producto;
+    }
+
+    
+    
+    
     public DetallePedido() {
     }
 

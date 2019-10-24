@@ -6,11 +6,9 @@
 package controlador;
 
 import dao.PedidoDAO;
-import dto.DetallePedido;
 import dto.Pedido;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Carlitos
  */
-public class servletPedido extends HttpServlet {
+public class servletActualizarIngresado extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,50 +31,6 @@ public class servletPedido extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        PedidoDAO dao = new PedidoDAO();
-        List<DetallePedido> detalle;
-
-        detalle = dao.readAll();
-        //PLATO
-        // Creamos una variable llamada listaMesa con el contenido de readAll(todos los datos de la BD)
-        request.setAttribute("listaPedido", detalle);
-
-        // Envias la variable a la vista mesa.jsp
-        request.getRequestDispatcher("cocina.jsp").forward(request, response);
-        
-
-        String opciones = request.getParameter("btnAccion");
- 
-        if (opciones.equals("Ingresado")) {
-            actualizarIngresar(request, response);
-        }
-
-        if (opciones.equals("En Proceso")) {
-            actualizarEnProceso(request, response);
-        }
-
-    }
-
-//    protected void listar(HttpServletRequest request, HttpServletResponse response)
-//            throws ServletException, IOException {
-//
-//        PedidoDAO dao = new PedidoDAO();
-//        List<DetallePedido> detalle;
-//
-//        detalle = dao.readAll();
-//        //PLATO
-//        // Creamos una variable llamada listaMesa con el contenido de readAll(todos los datos de la BD)
-//        request.setAttribute("listaPedido", detalle);
-//
-//        // Envias la variable a la vista mesa.jsp
-//        request.getRequestDispatcher("cocina.jsp").forward(request, response);
-//
-//    }
-
-    protected void actualizarIngresar(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
         try {
 
             int id_pedido = Integer.parseInt(request.getParameter("txtId"));
@@ -95,31 +49,6 @@ public class servletPedido extends HttpServlet {
         } finally {
             response.sendRedirect("cocina.jsp");
         }
-
-    }
-
-    protected void actualizarEnProceso(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-        try {
-
-            int id_pedido = Integer.parseInt(request.getParameter("txtId"));
-
-            Pedido pedido = new Pedido(id_pedido);
-            PedidoDAO dao = new PedidoDAO();
-
-            if (dao.actualizarEnProceso(pedido)) {
-                request.setAttribute("msjOK", "Pedido Actualizado Correctamente");
-            } else {
-                request.setAttribute("msjNO", "Error al actualizar Pedido");
-            }
-
-        } catch (Exception e) {
-            request.setAttribute("msjNO", "Error: " + e.getMessage());
-        } finally {
-            response.sendRedirect("cocina.jsp");
-        }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
