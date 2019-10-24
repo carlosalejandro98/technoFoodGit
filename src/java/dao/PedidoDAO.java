@@ -78,7 +78,7 @@ public class PedidoDAO {
         PreparedStatement pre;
         try {
             pre = conexion.getConnection().prepareCall(SQL_UPDATE_INGRESAR);
-            pre.setInt(1, pedido.getId_estado());
+            pre.setInt(1, pedido.getId_pedido());
 
             if (pre.executeUpdate() > 0) {
                 return true;
@@ -95,7 +95,7 @@ public class PedidoDAO {
         PreparedStatement pre;
         try {
             pre = conexion.getConnection().prepareCall(SQL_UPDATE_EN_PROCESO);
-            pre.setInt(1, pedido.getId_estado());
+            pre.setInt(1, pedido.getId_pedido());
 
             if (pre.executeUpdate() > 0) {
                 return true;

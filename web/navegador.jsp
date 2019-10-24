@@ -16,9 +16,10 @@
         %>
         <h1>Bienvenido ${nombre} ${apellido}</h1>
         <h1>Seleccione la accion que desee hacer</h1>
+
         <c:choose>
             <c:when test="${usu == 1}">
-                <a href="mesa.jsp">
+                <a href="servletMesa">
                     <div class="flip">
                         <div class="front" style="background-image: url(img/mesa.jpg)">
                             <h1 class="text-shadow">Disponibilidad de Mesa</h1>
@@ -71,7 +72,7 @@
                         </div>
                     </div>
                 </a>
-                
+
                 <a href="agregarProducto.jsp">
                     <div class="flip flip-vertical">
                         <div class="front" style="background-image: url(img/fondoMenu.jpg)">
@@ -82,8 +83,8 @@
                         </div>
                     </div>
                 </a>
-                
-              
+
+
 
                 <a href="cerrarSesion">
                     <div class="flip flip-vertical">
@@ -95,8 +96,8 @@
                         </div>
                     </div>
                 </a>
-                
-                
+
+
             </c:when>
             <c:when test="${usu == 2}">  
                 <a href="mesa.jsp">
@@ -134,7 +135,7 @@
             </c:when>
 
             <c:when test="${usu == 3}">  
-               
+
                 <a href="cocina.jsp">
                     <div class="flip">
                         <div class="front" style="background-image: url(img/recibirPedido.jpg)">
@@ -166,7 +167,7 @@
                         </div>
                     </div>
                 </a>
-                
+
                 <a href="cerrarSesion">
                     <div class="flip flip-vertical">
                         <div class="front" style="background-image: url(img/salir.jpg)">

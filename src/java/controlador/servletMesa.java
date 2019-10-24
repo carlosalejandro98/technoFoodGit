@@ -35,6 +35,16 @@ public class servletMesa extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        MesaDAO dao = new MesaDAO();
+        Mesa m = new Mesa();
+        List<Mesa> mesa;
+
+        mesa = dao.readAll();
+        request.setAttribute("listaMesa", mesa);
+        request.setAttribute("estado", m.getEstado_mesa());
+
+        request.getRequestDispatcher("mesa.jsp").forward(request, response);
+
         String opciones = request.getParameter("btnAccion");
         // Preguntamos por el contenido del boton
         if (opciones.equals("Listar")) {
@@ -44,7 +54,7 @@ public class servletMesa extends HttpServlet {
             reservar(request, response);
         }
         if (opciones.equals("Liberar")) {
-            liberar(request,response);
+            liberar(request, response);
         }
 
     }
@@ -56,7 +66,6 @@ public class servletMesa extends HttpServlet {
         Mesa m = new Mesa();
         List<Mesa> mesa;
 
-        
         mesa = dao.readAll();
         request.setAttribute("listaMesa", mesa);
         request.setAttribute("estado", m.getEstado_mesa());
@@ -69,11 +78,11 @@ public class servletMesa extends HttpServlet {
             throws ServletException, IOException {
 
         try {
-            int id_mesa = Integer.parseInt(request.getParameter("txtIdMesa"));
+            int mesaid = Integer.parseInt(request.getParameter("txtIdMesa"));
 
-            System.out.println(id_mesa);
-            
-            Mesa mesa = new Mesa(id_mesa);
+            System.out.println(mesaid);
+
+            Mesa mesa = new Mesa(mesaid);
             MesaDAO dao = new MesaDAO();
 
             if (dao.update(mesa)) {
@@ -82,23 +91,22 @@ public class servletMesa extends HttpServlet {
                 request.setAttribute("msjNO", "Error al Reservar Mesa");
             }
         } catch (Exception e) {
-            request.setAttribute("msjNO", "Error: "+e.getMessage());
-        }finally{
+            request.setAttribute("msjNO", "Error: " + e.getMessage());
+        } finally {
             response.sendRedirect("mesa.jsp");
         }
 
     }
 
-    
-     protected void liberar(HttpServletRequest request, HttpServletResponse response)
+    protected void liberar(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         try {
-            int id_mesa = Integer.parseInt(request.getParameter("txtIdMesa"));
+            int mesaid = Integer.parseInt(request.getParameter("txtIdMesa"));
 
-            System.out.println(id_mesa);
-            
-            Mesa mesa = new Mesa(id_mesa);
+            System.out.println(mesaid);
+
+            Mesa mesa = new Mesa(mesaid);
             MesaDAO dao = new MesaDAO();
 
             if (dao.updateOcupado(mesa)) {
@@ -107,12 +115,13 @@ public class servletMesa extends HttpServlet {
                 request.setAttribute("msjNO", "Error al Reservar Mesa");
             }
         } catch (Exception e) {
-            request.setAttribute("msjNO", "Error: "+e.getMessage());
-        }finally{
+            request.setAttribute("msjNO", "Error: " + e.getMessage());
+        } finally {
             response.sendRedirect("mesa.jsp");
         }
 
     }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

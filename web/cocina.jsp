@@ -39,7 +39,7 @@
                                 <img class="group list-group-image" src="img/logoPedidos.png" alt="" />
                                 <div class="caption">
                                     <h2 class="group inner list-group-item-heading">Pedido Numero: ${aux.getId_detalle_venta()}</h2>
-                                    <input type="number" name="txtId"  hidden="" />
+                                    <input type="number" name="txtId" value="${aux.getId_detalle_venta()}" hidden="" />
                                     <p class="group inner list-group-item-text">
 
                                         Nombre del Pedido: ${aux.getNombre_producto()}
@@ -60,7 +60,7 @@
                                         </div>
                                         <c:if test="${aux.getId_estado() == 1}">
                                             <div class="col-xs-12 col-md-6">
-                                                <input class="btn btn-info btn-lg" value="Ingresado" type="submit" name="btnAccion">
+                                                <button class="btn btn-info btn-lg" name="btnAccion" value="Ingresado" style="border-right: 25px;">Actualizar</button>
                                             </div>
                                         </c:if>
 

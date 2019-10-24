@@ -44,10 +44,9 @@ public class servletPedido extends HttpServlet {
 
         // Envias la variable a la vista mesa.jsp
         request.getRequestDispatcher("cocina.jsp").forward(request, response);
-        
 
         String opciones = request.getParameter("btnAccion");
- 
+
         if (opciones.equals("Ingresado")) {
             actualizarIngresar(request, response);
         }
@@ -58,21 +57,6 @@ public class servletPedido extends HttpServlet {
 
     }
 
-//    protected void listar(HttpServletRequest request, HttpServletResponse response)
-//            throws ServletException, IOException {
-//
-//        PedidoDAO dao = new PedidoDAO();
-//        List<DetallePedido> detalle;
-//
-//        detalle = dao.readAll();
-//        //PLATO
-//        // Creamos una variable llamada listaMesa con el contenido de readAll(todos los datos de la BD)
-//        request.setAttribute("listaPedido", detalle);
-//
-//        // Envias la variable a la vista mesa.jsp
-//        request.getRequestDispatcher("cocina.jsp").forward(request, response);
-//
-//    }
 
     protected void actualizarIngresar(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -80,6 +64,8 @@ public class servletPedido extends HttpServlet {
         try {
 
             int id_pedido = Integer.parseInt(request.getParameter("txtId"));
+
+            System.out.println(id_pedido);
 
             Pedido pedido = new Pedido(id_pedido);
             PedidoDAO dao = new PedidoDAO();

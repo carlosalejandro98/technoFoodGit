@@ -93,7 +93,7 @@ public class servletPago extends HttpServlet {
         } catch (Exception e) {
             request.setAttribute("msjNO", "Error: " + e.getMessage());
         } finally {
-            request.getRequestDispatcher("cart.jsp").forward(request, response);
+            request.getRequestDispatcher("boucher.jsp").forward(request, response);
         }
         
     }

@@ -17,11 +17,11 @@ public class Mesa {
         this.asientos = asientos;
     }
 
-    public Mesa() {
-    }
-
     public Mesa(int id_mesa) {
         this.id_mesa = id_mesa;
+    }
+
+    public Mesa() {
     }
 
     public int getId_mesa() {
