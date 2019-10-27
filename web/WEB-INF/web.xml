@@ -48,6 +48,10 @@
         <servlet-name>servletActualizarIngresado</servlet-name>
         <servlet-class>controlador.servletActualizarIngresado</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>servletComida</servlet-name>
+        <servlet-class>controlador.servletComida</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>servletLogin</servlet-name>
         <url-pattern>/servletLogin</url-pattern>
@@ -96,12 +100,16 @@
         <servlet-name>servletActualizarIngresado</servlet-name>
         <url-pattern>/actualizarIngresado</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>servletComida</servlet-name>
+        <url-pattern>/comida</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>comida</welcome-file>
     </welcome-file-list>
 </web-app>

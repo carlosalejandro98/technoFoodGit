@@ -20,6 +20,8 @@
         <tr>
           <td>&nbsp;</td>
           <td><input type="submit" name="button" id="button" value="Generar Reporte"></td>
+          
+        <a href="boucher.jsp">Ver Reporte General de Cliente</a>
         </tr>
       </table>
     </form>

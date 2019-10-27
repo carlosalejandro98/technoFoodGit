@@ -76,14 +76,12 @@ public class servletPago extends HttpServlet {
                 
                 DetallePedido detalle = new DetallePedido(cantidad, producto, mesa, estado, idpedido);
                 
-                
-                
                 if (dao.create(detalle)) {
                     
                     Mesa m = new Mesa(mesa);
                     daoMesa.update(m);
                     
-                    request.setAttribute("msjOK", "Pedido Generado Correctamente");
+                    request.setAttribute("msjOK", "Pedido enviado a cocina Correctamente");
                     contador++;
                 } else {
                     request.setAttribute("msjNO", "error");
@@ -93,7 +91,7 @@ public class servletPago extends HttpServlet {
         } catch (Exception e) {
             request.setAttribute("msjNO", "Error: " + e.getMessage());
         } finally {
-            request.getRequestDispatcher("boucher.jsp").forward(request, response);
+            request.getRequestDispatcher("cart.jsp").forward(request, response);
         }
         
     }

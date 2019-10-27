@@ -1,3 +1,6 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html class="no-js" lang="">
     <head>
@@ -31,11 +34,11 @@
                     <div class="navi">
                         <a href="#" class="toggle">Menu</a>
                         <ul>
-                            <li><a href="#menu" class="smooth"><i class="fa fa-cutlery" aria-hidden="true"></i>Men�</a></li>
+                            <li><a href="#menu" class="smooth"><i class="fa fa-cutlery" aria-hidden="true"></i>Menú</a></li>
                             <li><a href="#events" class="smooth"><i class="fa fa-music" aria-hidden="true"></i>Eventos</a></li>
                             <li><a href="#about" class="smooth"><i class="fa fa-info" aria-hidden="true"></i>Nosotros</a></li>
-                            <li><a href="#map" class="smooth"><i class="fa fa-map-marker" aria-hidden="true"></i>Ubicaci�n</a></li>
-                            <li><a href="login.jsp" class="smooth"><i class="fa fa-users" aria-hidden="true"></i>Iniciar Sesi�n</a></li>
+                            <li><a href="#map" class="smooth"><i class="fa fa-map-marker" aria-hidden="true"></i>Ubicación</a></li>
+                            <li><a href="login.jsp" class="smooth"><i class="fa fa-users" aria-hidden="true"></i>Iniciar Sesión</a></li>
                         </ul>
                         <a class="logo" href="index.jsp"><!--<img src="img/logo-light.svg">--></a>
                     </div>
@@ -64,100 +67,73 @@
                 <div class="heading">
                     <h2 class="wow fadeInRight" data-wow-delay="1s">TECHNOFOOD</h2>
                     <p class="wow fadeInRight" data-wow-delay="1s">Restaurant de calidad y comodidad para sus clientes.</p>
-                    <a href="#map" class="btn-main smooth wow fadeInUp" data-wow-delay="1s">Ver Ubicaci�n</a>
+                    <a href="#map" class="btn-main smooth wow fadeInUp" data-wow-delay="1s">Ver Ubicación</a>
                 </div>
             </div>
         </div>
-        <section class="light parallax" id="menu">
-            <div class="wrap menu">
-                <h2 class="brn wow fadeInLeft">Men�</h2>
-                <ul class="filter wow fadeInUp">
-                    <li><a href="#main" class="active">Entrada</a></li>
-                    <li><a href="#desserts">Postres</a></li>
-                    <li><a href="#drinks">Bebidas</a></li>
-                </ul>
-                <div class="menu-card wow fadeInUp">
-                    <!-- main id -->
-                    <div id="main" class="card">
-                        <div class="full main">
-                            <h3>Entrada</h3>
-                        </div>
-                        <div class="half">
-                            <ul>
-                                <li>Ejemplo<span class="price">$1000</span></li>
-                                <li>Ejemplo<span class="price">$1000</span></li>
-                                <li>Ejemplo<span class="price">$1000</span></li>
-                                <li>Ejemplo<span class="price">$1000</span></li>
-                                <li>Ejemplo<span class="price">$1000</span></li>
-                                <li>Ejemplo<span class="price">$1000</span></li>
-                            </ul>
-                        </div>
-                        <div class="half">
-                            <ul>
-                                <li>Ejemplo<span class="price">$1000</span></li>
-                                <li>Ejemplo<span class="price">$1000</span></li>
-                                <li>Ejemplo<span class="price">$1000</span></li>
-                                <li>Ejemplo<span class="price">$1000</span></li>
-                                <li>Ejemplo<span class="price">$1000</span></li>
-                                <li>Ejemplo<span class="price">$1000</span></li>
-                            </ul>
-                        </div>
-                    </div> <!-- main id end -->
-                    <!-- main id -->
-                    <div id="desserts" class="card hidden">
-                        <div class="full desserts">
-                            <h3>Postres</h3>
-                        </div>
-                        <div class="half">
-                            <ul>
-                                <li>Ejemplo<span class="price">$1000</span></li>
-                                <li>Ejemplo<span class="price">$1000</span></li>
-                                <li>Ejemplo<span class="price">$1000</span></li>
-                                <li>Ejemplo<span class="price">$1000</span></li>
-                                <li>Ejemplo<span class="price">$1000</span></li>
-                                <li>Ejemplo<span class="price">$1000</span></li>
-                            </ul>
-                        </div>
-                        <div class="half">
-                            <ul>
-                                <li>Ejemplo<span class="price">$1000</span></li>
-                                <li>Ejemplo<span class="price">$1000</span></li>
-                                <li>Ejemplo<span class="price">$1000</span></li>
-                                <li>Ejemplo<span class="price">$1000</span></li>
-                                <li>Ejemplo<span class="price">$1000</span></li>
-                                <li>Ejemplo<span class="price">$1000</span></li>
-                            </ul>
-                        </div>
-                    </div> <!-- main id end -->
-                    <!-- main id -->
-                    <div id="drinks" class="card hidden">
-                        <div class="full drinks">
-                            <h3>Bebidas</h3>
-                        </div>
-                        <div class="half">
-                            <ul>
-                                <li>Ejemplo<span class="price">$1000</span></li>
-                                <li>Ejemplo<span class="price">$1000</span></li>
-                                <li>Ejemplo<span class="price">$1000</span></li>
-                                <li>Ejemplo<span class="price">$1000</span></li>
-                                <li>Ejemplo<span class="price">$1000</span></li>
-                                <li>Ejemplo<span class="price">$1000</span></li>
-                            </ul>
-                        </div>
-                        <div class="half">
-                            <ul>
-                                <li>Ejemplo<span class="price">$1000</span></li>
-                                <li>Ejemplo<span class="price">$1000</span></li>
-                                <li>Ejemplo<span class="price">$1000</span></li>
-                                <li>Ejemplo<span class="price">$1000</span></li>
-                                <li>Ejemplo<span class="price">$1000</span></li>
-                                <li>Ejemplo<span class="price">$1000</span></li>
-                            </ul>
-                        </div>
-                    </div> <!-- main id end -->
-                </div> <!-- Menu card DIV end -->
-            </div> <!-- Wrapper end -->
-        </section> <!-- Menu section end -->
+        <form action="comida" method="POST">
+            <section class="light parallax" id="menu">
+                <div class="wrap menu">
+                    <h2 class="brn wow fadeInLeft">Menú</h2>
+                    <ul class="filter wow fadeInUp">
+                        <li><a href="#main" class="active">Menú</a></li>
+                        <li><a href="#desserts">Platos</a></li>
+                        <li><a href="#drinks">Extra</a></li>
+                    </ul>
+                    <div class="menu-card wow fadeInUp">
+
+
+                        <!-- main id -->
+                        <div id="main" class="card">
+                            <div class="full main">
+                                <h3>Menú</h3>
+                            </div>
+                            <c:forEach var="aux" items="${listaComida}">
+
+                                <div class="half">
+                                    <ul>
+                                        <li>${aux.getNombre()}<span class="price">$${aux.getPrecio()}</span></li>
+                                    </ul>
+                                </div>
+                            </c:forEach>
+                        </div> <!-- main id end -->
+
+
+                        <!-- main id -->
+                        <div id="desserts" class="card hidden">
+                            <div class="full desserts">
+                                <h3>Platos</h3>
+                            </div>
+
+                            <c:forEach var="aux" items="${listaPlato}">
+                                <div class="half">
+                                    <ul>
+                                        <li>${aux.getNombre()}<span class="price">$${aux.getPrecio()}</span></li>
+                                    </ul>
+                                </div>
+                            </c:forEach>
+                        </div> <!-- main id end -->
+
+
+                        <!-- main id -->
+                        <div id="drinks" class="card hidden">
+                            <div class="full drinks">
+                                <h3>Extras</h3>
+                            </div>
+                            <c:forEach var="aux" items="${listaExtra}">
+                                <div class="half">
+                                    <ul>
+                                        <li>${aux.getNombre()}<span class="price">$${aux.getPrecio()}</span></li>
+                                    </ul>
+                                </div>
+                            </c:forEach>
+                        </div> <!-- main id end -->
+
+                    </div> <!-- Menu card DIV end -->
+                </div> <!-- Wrapper end -->
+            </section> <!-- Menu section end -->
+        </form>
+
         <section class="dark" id="events">
             <div class="wrap">
                 <h2 class="ylw wow fadeInRight">Eventos</h2>
@@ -213,7 +189,7 @@
             <div class="wrap about">
                 <div class="two-third  wow fadeInLeft">
                     <h2 class="brn sngl">Nuestro Restaurant</h2>
-                    <h5 class="ylw">Descripción. </p>
+                    <h5 class="ylw">DescripciÃ³n. </p>
                         <p class="tel"><i class="fa fa-phone" aria-hidden="true"></i>+562 256894537</p>
                 </div>
                 <div class="third wow fadeInRight">

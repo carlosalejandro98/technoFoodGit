@@ -72,7 +72,7 @@
 
                                         <c:if test="${aux.getId_estado() == 3}">
                                             <div class="col-xs-12 col-md-6">
-                                                <input class="btn btn-success btn-lg" value="Listo">
+                                                <input class="btn btn-success btn-lg" value="Listo" >
                                             </div>
                                         </c:if>
 

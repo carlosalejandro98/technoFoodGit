@@ -34,7 +34,7 @@
 
                         <li class="pricingTable-firstTable_table">
 
-                            <input type="number" value="${aux.getId_mesa()}" name="txtIdMesa" hidden="" />
+                            <input type="number" value="${aux.getId_mesa()}" name="txtIdMesa" />
                             <h1 class="pricingTable-firstTable_table__header">Mesa ${aux.getId_mesa()}</h1>
                             <p class="pricingTable-firstTable_table__pricing"><span></span><span>${aux.getAsientos()}</span><span>Asientos</span></p>
 
