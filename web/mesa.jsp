@@ -18,23 +18,23 @@
         %>
         <!-- partial:index.partial.html -->
         <a href="navegador.jsp"><button class="botonVolver">Volver</button></a>
-        <form action="servletMesa" method="POST">
-
-            <div class="pricingTable">
-
-                <h2 class="pricingTable-title">Disponibilidad de Mesas</h2>
-                <h3 class="pricingTable-subtitle">Seleccione la mesa a ocupar</h3>
-
-                <center><input type="submit" name="btnAccion" value="Listar" class="botonListar"/></center>
 
 
+        <div class="pricingTable">
 
-                <ul class="pricingTable-firstTable">
-                    <c:forEach var="aux" items="${listaMesa}">
+            <h2 class="pricingTable-title">Disponibilidad de Mesas</h2>
+            <h3 class="pricingTable-subtitle">Seleccione la mesa a ocupar</h3>
 
+            <center><input type="button" name="btnAccion" onClick="location.reload();" value="Listar" class="botonListar"/></center>
+
+
+
+            <ul class="pricingTable-firstTable">
+                <c:forEach var="aux" items="${listaMesa}">
+                    <form action="servletMesa" method="POST">
                         <li class="pricingTable-firstTable_table">
 
-                            <input type="number" value="${aux.getId_mesa()}" name="txtIdMesa" />
+                            <input type="number" value="${aux.getId_mesa()}" name="txtIdMesa" hidden="" />
                             <h1 class="pricingTable-firstTable_table__header">Mesa ${aux.getId_mesa()}</h1>
                             <p class="pricingTable-firstTable_table__pricing"><span></span><span>${aux.getAsientos()}</span><span>Asientos</span></p>
 
@@ -47,16 +47,17 @@
                             </c:if>
 
                         </li>
+                    </form>
+                </c:forEach>
 
-                    </c:forEach>
-                </ul>
-            </div>
-            <center>
-                <p>${msjOK}</p>
-                <p>${msjNO}</p>
-            </center>
-        </form>
+            </ul>
+        </div>
+    <center>
+        <p>${msjOK}</p>
+        <p>${msjNO}</p>
+    </center>
 
 
-    </body>
+
+</body>
 </html>

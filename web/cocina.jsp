@@ -18,21 +18,22 @@
                 response.sendRedirect("404.jsp");
             }
         %>
-        <form action="servletPedido" method="POST">
-            <!-- partial:index.partial.html -->
-            <div class="container">
-                <div class="well well-sm">
-                    <strong>Modo</strong>
-                    <div class="btn-group">
-                        <a href="#" id="list" class="btn btn-default btn-sm">
-                            <span class="glyphicon glyphicon-th-list"></span>Lista</a> <a href="#" id="grid" class="btn btn-default btn-sm">
-                            <span class="glyphicon glyphicon-th"></span>Grupo</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <span><a href="navegador.jsp"><input class="clear-cart btn btn-danger" value="Volver" style="border-right: 25px;"></a></span>
-                        <span><button class="clear-cart btn btn-success" name="btnAccion" value="Actualizar" style="border-right: 25px;">Actualizar</button></span>
-                    </div>
-                </div>
 
-                <c:forEach var="aux" items="${listaPedido}">
+        <!-- partial:index.partial.html -->
+        <div class="container">
+            <div class="well well-sm">
+                <strong>Modo</strong>
+                <div class="btn-group">
+                    <a href="#" id="list" class="btn btn-default btn-sm">
+                        <span class="glyphicon glyphicon-th-list"></span>Lista</a> <a href="#" id="grid" class="btn btn-default btn-sm">
+                        <span class="glyphicon glyphicon-th"></span>Grupo</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span><a href="navegador.jsp"><input class="clear-cart btn btn-danger" value="Volver" style="border-right: 25px;"></a></span>
+                    <span><button class="clear-cart btn btn-success" name="btnAccion" value="Actualizar" onClick="location.reload();" style="border-right: 25px;">Actualizar</button></span>
+                </div>
+            </div>
+
+            <c:forEach var="aux" items="${listaPedido}">
+                <form action="servletPedido" method="POST">
                     <div id="products" class="row list-group">
                         <div class="item  col-xs-4 col-lg-4">
                             <div class="thumbnail">
@@ -53,7 +54,7 @@
 
 
                                     </p>
-                                    
+
                                     <div class="row">
                                         <div class="col-xs-12 col-md-6">
                                             <p class="lead"></p>
@@ -81,13 +82,14 @@
                             </div>
                         </div>
                     </div>
-                </c:forEach>
+                </form>
+            </c:forEach>
 
-            </div>
-            <!-- partial -->
-            <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-            <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
-            <script  src="js/cocina.js"></script>
-        </form>
+        </div>
+        <!-- partial -->
+        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+        <script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
+        <script  src="js/cocina.js"></script>
+
     </body>
 </html>

@@ -123,7 +123,7 @@
                 <footer class="form__footer">
                     <div class="footer-wrapper">
                         <input type="submit" name="btnAccion" value="Reservar" style="background-color: green;">
-                        <a href="index.jsp"><input type="button" value="Volver" class="" style="background-color: #FFAE33;"></a>
+                        <a href="comida"><input type="button" value="Volver" class="" style="background-color: #FFAE33;"></a>
                     </div>
                 </footer>
             </div>

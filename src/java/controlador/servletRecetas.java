@@ -59,7 +59,7 @@ public class servletRecetas extends HttpServlet {
             java.util.Date formato = f.parse(fechaCreacion);
             //Date formato = (Date) new SimpleDateFormat("yyyy-MM-dd").parse(fechaReserva);
             // comentado java.sql.Date fecha=java.sql.Date.valueOf(fechaReserva);
-            java.sql.Date fecha = new java.sql.Date(formato.getDate());
+            java.sql.Date fecha = new java.sql.Date(formato.getTime());
 
             String ingrediente = request.getParameter("txtIngredientes");
             String descripcion = request.getParameter("txtDescripcion");

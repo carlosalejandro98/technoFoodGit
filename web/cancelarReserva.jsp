@@ -64,7 +64,7 @@
                 <footer class="form__footer">
                     <div class="footer-wrapper">
                         <a href="reservar.jsp"><input type="button" value="Volver a Reservar" style="background-color: green;"></a>
-                        <a href="index.jsp"><input type="button" value="Volver al Inicio" style="background-color: #FFAE33;"></a>
+                        <a href="comida"><input type="button" value="Volver al Inicio" style="background-color: #FFAE33;"></a>
                     </div>
                 </footer>
             </div>

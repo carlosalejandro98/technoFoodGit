@@ -41,7 +41,7 @@ public class servletPago extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         String opciones = request.getParameter("btnAccion");
         // Preguntamos por el contenido del boton
         if (opciones.equals("Agregar")) {
@@ -50,21 +50,20 @@ public class servletPago extends HttpServlet {
         if (opciones.equals("Generar")) {
             pedido(request, response);
         }
-        
+
     }
-    
+
     protected void agregar(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         try {
             HttpSession sesion = request.getSession(true);
             ArrayList<Carrito> carritos = sesion.getAttribute("carrito") == null ? null : (ArrayList) sesion.getAttribute("carrito");
             int contador = 1;
-            
-            MesaDAO daoMesa = new MesaDAO();
+
             DetalleDAO dao = new DetalleDAO();
             for (Carrito carrito : carritos) {
-                
+
                 String c = "txtCantidad" + String.valueOf(contador);
                 String id = "txtId" + String.valueOf(contador);
                 int cantidad = Integer.parseInt(request.getParameter(c));
@@ -72,59 +71,55 @@ public class servletPago extends HttpServlet {
                 int mesa = Integer.parseInt(request.getParameter("cboMesa"));
                 int estado = Integer.parseInt(request.getParameter("txtEstado"));
                 int idpedido = Integer.parseInt(request.getParameter("txtPedido"));
-                
-                
+
                 DetallePedido detalle = new DetallePedido(cantidad, producto, mesa, estado, idpedido);
-                
+
                 if (dao.create(detalle)) {
-                    
-                    Mesa m = new Mesa(mesa);
-                    daoMesa.update(m);
-                    
+
                     request.setAttribute("msjOK", "Pedido enviado a cocina Correctamente");
                     contador++;
                 } else {
                     request.setAttribute("msjNO", "error");
                 }
             }
-            
+
         } catch (Exception e) {
             request.setAttribute("msjNO", "Error: " + e.getMessage());
         } finally {
             request.getRequestDispatcher("cart.jsp").forward(request, response);
         }
-        
+
     }
-    
+
     protected void pedido(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         try {
-            
+
             String fechaPedido = request.getParameter("txtFecha");
             SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
             java.util.Date formato = f.parse(fechaPedido);
-            java.sql.Date fecha = new java.sql.Date(formato.getDate());
-            
+            java.sql.Date fecha = new java.sql.Date(formato.getTime());
+
             int total = Integer.parseInt(request.getParameter("txtTotal"));
-            
+
             int usuario = Integer.parseInt(request.getParameter("txtUsuario"));
-            
+
             Pedido pedido = new Pedido(fecha, total, usuario);
             DetalleDAO dao = new DetalleDAO();
-            
+
             if (dao.crearPedido(pedido)) {
                 request.setAttribute("msjOK", "Pedido Registrado Correctamente");
             } else {
                 request.setAttribute("msjNO", "Error al generar Pedido");
             }
-            
+
         } catch (Exception e) {
             request.setAttribute("msjNO", "Error: " + e.getMessage());
         } finally {
             request.getRequestDispatcher("cart.jsp").forward(request, response);
         }
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
