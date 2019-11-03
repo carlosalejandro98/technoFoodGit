@@ -31,12 +31,12 @@
                         <div class="row-wrapper">
                             <center>
                                 <div class="ele email-address">
-                                    <label for="firstName">Numero de Boucher</label>
-                                    <input type="text" placeholder="12356" name="txtId">
+                                    <label for="firstName">Rut del reservante</label>
+                                    <input type="text" placeholder="11.111.111-1" name="txtId" >
                                 </div>
                             </center>
 
-                           
+
                         </div>
                         <div class="row-wrapper">
 

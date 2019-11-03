@@ -59,14 +59,13 @@ public class servletReserva extends HttpServlet {
             int asiento = Integer.parseInt(request.getParameter("txtAsientos"));
 
             String fechaReserva = request.getParameter("txtFecha");
-            SimpleDateFormat f=new SimpleDateFormat("yyyy-MM-dd");
-            java.util.Date formato=f.parse(fechaReserva);
+            SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+            java.util.Date formato = f.parse(fechaReserva);
             //Date formato = (Date) new SimpleDateFormat("yyyy-MM-dd").parse(fechaReserva);
             //java.sql.Date fecha=java.sql.Date.valueOf(fechaReserva);
             java.sql.Date fecha = new java.sql.Date(formato.getTime());
 
             int mesa = Integer.parseInt(request.getParameter("cboMesa"));
-
 
             Reserva reserva = new Reserva(rut, nombre, apellido, telefono, correo, asiento, fecha, mesa);
             ReservarDAO dao = new ReservarDAO();
@@ -90,9 +89,9 @@ public class servletReserva extends HttpServlet {
 
         try {
             // Recibimos los datos del formulario
-            int id = Integer.parseInt(request.getParameter("txtId"));
+            String rut = request.getParameter("txtId");
             // Llamamos al DAO para conectarnos a la BD
-            Reserva reserva = new Reserva(id);
+            Reserva reserva = new Reserva(rut);
             ReservarDAO dao = new ReservarDAO();
 
             if (dao.delete(reserva)) {

@@ -44,17 +44,17 @@
 
                             <div class="ele email-address">
                                 <label for="firstName">Rut</label>
-                                <input type="text" placeholder="11.111.111-1" name="txtRut">
+                                <input type="text" placeholder="11.111.111-1" name="txtRut" required="">
                             </div>
 
                             <div class="ele first-name">
                                 <label for="firstName">Nombres</label>
-                                <input type="text" placeholder="Raymond Fabian" name="txtNombre">
+                                <input type="text" placeholder="Raymond Fabian" name="txtNombre" required="">
                             </div>
 
                             <div class="ele first-name">
                                 <label for="firstName">Apellidos</label>
-                                <input type="text" placeholder="Contreras Yañez" name="txtApellido">
+                                <input type="text" placeholder="Contreras Yañez" name="txtApellido" required="">
                             </div>
 
 
@@ -66,12 +66,12 @@
 
                             <div class="ele first-name">
                                 <label for="firstName">Telefono</label>
-                                <input type="text" placeholder="Contreras Yañez" name="txtTelefono">
+                                <input type="text" placeholder="9896574526" name="txtTelefono" minlength="7" maxlength="8" required="">
                             </div>
 
                             <div class="ele email-address">
                                 <label for="firstName">Correo Electronico</label>
-                                <input type="email" placeholder="fcontreras@technofood.com" name="txtCorreo">
+                                <input type="email" placeholder="fcontreras@technofood.com" name="txtCorreo" required="">
                             </div>
 
 
@@ -83,14 +83,14 @@
                         <div class="row-wrapper">
                             <div>
                                 <label for="firstName">Asientos</label>
-                                <input type="number" name="txtAsientos">
+                                <input type="number" name="txtAsientos" min="1" max="15" required="">
                             </div>
                         </div>
 
                         <div class="row-wrapper">
                             <div>
                                 <label for="firstName">Fecha</label>
-                                <input type="date" name="txtFecha">
+                                <input type="date" name="txtFecha" required="">
                             </div>
                         </div>
 
@@ -101,7 +101,7 @@
                                     <option value="hide">Mesa</option>
                                     <option value="${mesas.id_mesa}">${mesas.id_mesa}</option>
                                 </c:forEach>
-                               
+
                             </select>
                         </div>   
 
@@ -130,7 +130,7 @@
 
         </form>
 
-        <p class="after" style="display: none; color: #777; font-weight: 200;">Reload the browser window everytime you close the reservation form to show up again.</p>
+        <p class="after" style="display: none; color: #777; font-weight: 200;">Recargar la pagina para visualizar el contenido.</p>
         <!-- partial -->
         <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
         <script  src="js/reservar.js"></script>

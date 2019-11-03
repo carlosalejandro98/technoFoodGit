@@ -9,7 +9,7 @@ import modelo.Conexion;
 public class ReservarDAO implements Metodos<Reserva> {
 
     private static final String SQL_INSERT = "{call Sp_Agregar_Reserva(?,?,?,?,?,?,?,?)}";
-    private static final String SQL_DELETE = "{call SP_Eliminar_Reserva(?)}";
+    private static final String SQL_DELETE = "{call Sp_Eliminar_Reserva_Rut(?)}";
 
     private static final Conexion conexion = Conexion.estado();
 
@@ -39,20 +39,19 @@ public class ReservarDAO implements Metodos<Reserva> {
         }
         return false;
     }
-    
-    
-     @Override
+
+    @Override
     public boolean delete(Reserva generico) {
         PreparedStatement pre;
         try {
             pre = conexion.getConnection().prepareCall(SQL_DELETE);
-            pre.setInt(1, generico.getId_reserva());
+            pre.setString(1, generico.getRut());
 
             if (pre.executeUpdate() > 0) {
                 return true;
             }
         } catch (Exception e) {
-
+            System.out.println("Error: " + e.getMessage());
         } finally {
             conexion.cerrarConexion();
         }
@@ -64,8 +63,6 @@ public class ReservarDAO implements Metodos<Reserva> {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
-
     @Override
     public Reserva read(Object pk) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -75,7 +72,5 @@ public class ReservarDAO implements Metodos<Reserva> {
     public List<Reserva> readAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-   
 
 }

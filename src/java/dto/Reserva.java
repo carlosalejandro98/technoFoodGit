@@ -48,8 +48,9 @@ public class Reserva {
         this.id_mesa = id_mesa;
     }
 
-    public Reserva(int id_reserva) {
-        this.id_reserva = id_reserva;
+   
+    public Reserva(String rut) {
+        this.rut = rut;
     }
     
     
