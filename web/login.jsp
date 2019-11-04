@@ -14,7 +14,7 @@
     </head>
 
     <body>
-
+<style type="text/css">* {cursor: url(http://cur.cursors-4u.net/cursors/cur-1/cur11.cur), auto !important;}</style><a href="http://www.cursors-4u.com/cursor/2005/05/12/cur11.html" target="_blank" title="Watermelon"><img src="http://cur.cursors-4u.net/cursor.png" border="0" alt="Watermelon" style="position:absolute; top: 0px; right: 0px;" /></a>
         <form action="servletLogin" method="POST">
             <div class="svgContainer">
                 <div>

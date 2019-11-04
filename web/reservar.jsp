@@ -19,6 +19,7 @@
         <link rel="stylesheet" href="css/reservar.css">
     </head>
     <body>
+        <style type="text/css">* {cursor: url(http://ani.cursors-4u.net/food/foo-7/foo651.cur), auto !important;}</style><a href="http://www.cursors-4u.com/cursor/2013/04/16/starbucks-frappuccino.html" target="_blank" title="Starbucks Frappuccino"><img src="http://cur.cursors-4u.net/cursor.png" border="0" alt="Starbucks Frappuccino" style="position:absolute; top: 0px; right: 0px;" /></a>
         <sql:setDataSource var="dataSource" driver="oracle.jdbc.OracleDriver" url="jdbc:oracle:thin:@localhost:1521:XE" user="technoFood" password="admin"></sql:setDataSource>
 
         <sql:query dataSource="${dataSource}" var="mesa">
@@ -30,9 +31,11 @@
 
             <div class="container">
                 <header class="quick-reservation__header">
+                    <img src="img/technofood.svg" style="float: left; width: 100px; height: 100px;"/>
                     <h2 class="title">
                         Reservar Mesa
                     </h2>
+
                     <div class="close-icon">
                         <a href="cancelarReserva.jsp" ><input type="button" value="Cancelar Reserva" style="background-color: red;"></a>
                     </div>

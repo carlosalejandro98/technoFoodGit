@@ -18,8 +18,8 @@ import oracle.jdbc.oracore.OracleType;
 public class MesaDAO {
 
     private static final String SQL_READALL = "{call Sp_Listar_Mesa(?)}";
-    private static final String SQL_UPDATE = "{call Sp_Modificar_Mesa2(?)}";
-    private static final String SQL_UPDATE_OCUPADO = "{call Sp_Modificar_Mesa_Ocupada(?)}";
+    private static final String SQL_UPDATE = "{call Sp_Modificar_Mesa_3(?)}";
+    private static final String SQL_UPDATE_OCUPADO = "{call Sp_Modificar_Mesa_2(?)}";
 
     private static final Conexion conexion = Conexion.estado();
 

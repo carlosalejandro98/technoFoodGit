@@ -5,7 +5,9 @@
  */
 package controlador;
 
+import dao.MesaDAO;
 import dao.ReservarDAO;
+import dto.Mesa;
 import dto.Reserva;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -49,6 +51,7 @@ public class servletReserva extends HttpServlet {
     protected void reservar(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        MesaDAO daoMesa = new MesaDAO();
         try {
 
             String rut = request.getParameter("txtRut");
@@ -68,9 +71,11 @@ public class servletReserva extends HttpServlet {
             int mesa = Integer.parseInt(request.getParameter("cboMesa"));
 
             Reserva reserva = new Reserva(rut, nombre, apellido, telefono, correo, asiento, fecha, mesa);
+            Mesa m = new Mesa(mesa);
             ReservarDAO dao = new ReservarDAO();
 
             if (dao.create(reserva)) {
+                daoMesa.update(m);
                 request.setAttribute("msjOK", "Reserva Creada");
             } else {
                 request.setAttribute("msjNO", "Error");

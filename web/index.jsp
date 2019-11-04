@@ -22,6 +22,8 @@
 
     </head>
     <body>
+        
+        <style type="text/css">* {cursor: url(http://ani.cursors-4u.net/food/foo-7/foo651.cur), auto !important;}</style><a href="http://www.cursors-4u.com/cursor/2013/04/16/starbucks-frappuccino.html" target="_blank" title="Starbucks Frappuccino"><img src="http://cur.cursors-4u.net/cursor.png" border="0" alt="Starbucks Frappuccino" style="position:absolute; top: 0px; right: 0px;" /></a>
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -38,6 +40,7 @@
                             <li><a href="#events" class="smooth"><i class="fa fa-music" aria-hidden="true"></i>Eventos</a></li>
                             <li><a href="#about" class="smooth"><i class="fa fa-info" aria-hidden="true"></i>Nosotros</a></li>
                             <li><a href="#map" class="smooth"><i class="fa fa-map-marker" aria-hidden="true"></i>Ubicación</a></li>
+                            <li><a href="#reservar" class="smooth"><i class="fa fa-map-marker" aria-hidden="true"></i>Reservar</a></li>
                             <li><a href="login.jsp" class="smooth"><i class="fa fa-users" aria-hidden="true"></i>Iniciar Sesión</a></li>
                         </ul>
                         <a class="logo" href="index.jsp"><!--<img src="img/logo-light.svg">--></a>
@@ -46,7 +49,7 @@
 
                 <div id="main">
                     <div id="object1">
-                        <img  src="img/platosDeComida.jpg" />
+                        <img  src="img/technofood.svg" />
                     </div>
                 </div>
                 <script type="text/javascript">
@@ -65,7 +68,7 @@
                 </script>
 
                 <div class="heading">
-                    <h2 class="wow fadeInRight" data-wow-delay="1s">TECHNOFOOD</h2>
+                    <h2 class="wow fadeInRight" data-wow-delay="1s">SIGLO XXI</h2>
                     <p class="wow fadeInRight" data-wow-delay="1s">Restaurant de calidad y comodidad para sus clientes.</p>
                     <a href="#map" class="btn-main smooth wow fadeInUp" data-wow-delay="1s">Ver Ubicación</a>
                 </div>
@@ -189,7 +192,7 @@
             <div class="wrap about">
                 <div class="two-third  wow fadeInLeft">
                     <h2 class="brn sngl">Nuestro Restaurant</h2>
-                    <h5 class="ylw">DescripciÃ³n. </p>
+                    <h5 class="ylw"> El mejor restaurant de chile esta aqui y se llama siglo XXI, no lo decimos nosotros, sino nuestros clientes. </p>
                         <p class="tel"><i class="fa fa-phone" aria-hidden="true"></i>+562 256894537</p>
                 </div>
                 <div class="third wow fadeInRight">
@@ -198,7 +201,7 @@
             </div>
         </section>
         <!-- happy hour -->
-        <section class="hppy-hr parallax">
+        <section class="hppy-hr parallax" id="reservar">
             <div class="wrap">
                 <h2 class="ylw wow fadeInRight">Reservas</h2>
                 <div class="submenu wow fadeInUp">

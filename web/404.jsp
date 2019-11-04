@@ -11,7 +11,7 @@
             <center>
                 <h1 style="color: red;">Acceso Denegado</h1>
             </center>
-            <a href="index.jsp"><svg class="liquid-button"
+            <a href="comida"><svg class="liquid-button"
                     data-text="REGRESAR"
                     data-force-factor="0.1"
                     data-layer-1-viscosity="0.5"

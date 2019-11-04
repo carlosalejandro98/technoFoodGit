@@ -16,11 +16,13 @@
         <link rel="stylesheet" href="css/reservar.css">
     </head>
     <body>
+        <style type="text/css">* {cursor: url(http://ani.cursors-4u.net/food/foo-7/foo651.cur), auto !important;}</style><a href="http://www.cursors-4u.com/cursor/2013/04/16/starbucks-frappuccino.html" target="_blank" title="Starbucks Frappuccino"><img src="http://cur.cursors-4u.net/cursor.png" border="0" alt="Starbucks Frappuccino" style="position:absolute; top: 0px; right: 0px;" /></a>
         <!-- partial:index.partial.html -->
         <form class="quick-reservation" action="servletReserva" method="POST">
 
             <div class="container">
                 <header class="quick-reservation__header">
+                    <img src="img/technofood.svg" style="float: left; width: 100px; height: 100px;"/>
                     <h2 class="title">
                         Cancelar Reserva
                     </h2>
@@ -32,7 +34,7 @@
                             <center>
                                 <div class="ele email-address">
                                     <label for="firstName">Rut del reservante</label>
-                                    <input type="text" placeholder="11.111.111-1" name="txtId" >
+                                    <input type="text" placeholder="11.111.111-1" name="txtId" required="">
                                 </div>
                             </center>
 
@@ -52,7 +54,7 @@
                 <div class="reservation-info">
                     <div class="ele data">
                         <h4 class="data__head">!Importante</h4>
-                        <p class="data__description">Para eliminar su reserva debe ingresar el numero de boucher generado al reservar.</p>
+                        <p class="data__description">Para eliminar su reserva debe ingresar el rut de la persona que hizo la reserva.</p>
                     </div>
                     <div class="ele data">
                         ${msjOK}
