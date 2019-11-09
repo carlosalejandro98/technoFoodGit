@@ -37,6 +37,17 @@ public class Reserva {
         this.id_mesa = id_mesa;
     }
 
+    public Reserva(int id_reserva, String rut, String nombre, String apellido, int asiento, Date fecha) {
+        this.id_reserva = id_reserva;
+        this.rut = rut;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.asiento = asiento;
+        this.fecha = fecha;
+    }
+    
+    
+
     public Reserva(String rut, String nombre, String apellido, int telefono, String correo, int asiento, Date fecha, int id_mesa) {
         this.rut = rut;
         this.nombre = nombre;

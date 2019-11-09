@@ -98,14 +98,7 @@
                         </div>
 
                         <div class="ele rooms">
-                            <label>Mesa</label>
-                            <select name="cboMesa">
-                                <c:forEach var="mesas" items="${mesa.rows}">
-                                    <option value="hide">Mesa</option>
-                                    <option value="${mesas.id_mesa}">${mesas.id_mesa}</option>
-                                </c:forEach>
-
-                            </select>
+                            <input type="number" name="cboMesa" value="1" hidden="">
                         </div>   
 
                     </section>

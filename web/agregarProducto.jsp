@@ -28,8 +28,8 @@
         <!--===============================================================================================-->
     </head>
     <body>
-<style type="text/css">* {cursor: url(http://cur.cursors-4u.net/cursors/cur-1/cur11.cur), auto !important;}</style><a href="http://www.cursors-4u.com/cursor/2005/05/12/cur11.html" target="_blank" title="Watermelon"><img src="http://cur.cursors-4u.net/cursor.png" border="0" alt="Watermelon" style="position:absolute; top: 0px; right: 0px;" /></a>
-        <sql:setDataSource var="dataSource" driver="oracle.jdbc.OracleDriver" url="jdbc:oracle:thin:@localhost:1521:XE" user="technoFood" password="admin"></sql:setDataSource>
+        <style type="text/css">* {cursor: url(http://cur.cursors-4u.net/cursors/cur-1/cur11.cur), auto !important;}</style><a href="http://www.cursors-4u.com/cursor/2005/05/12/cur11.html" target="_blank" title="Watermelon"><img src="http://cur.cursors-4u.net/cursor.png" border="0" alt="Watermelon" style="position:absolute; top: 0px; right: 0px;" /></a>
+            <sql:setDataSource var="dataSource" driver="oracle.jdbc.OracleDriver" url="jdbc:oracle:thin:@localhost:1521:XE" user="technoFood" password="admin"></sql:setDataSource>
 
         <sql:query dataSource="${dataSource}" var="tipo">
             SELECT id_tipo_producto, tipo_producto FROM tipo_producto
@@ -118,7 +118,7 @@
                         </div> 
 
                         <div class="wrap-input100 validate-input">
-                            <label>Seleccione el Insumo:</label>
+                            <label>Seleccione la Insumo:</label>
                             <select name="cboInsumo">
                                 <c:forEach var="insumos" items="${insumo.rows}">
                                     <option value="${insumos.id_insumo}">${insumos.nombre}</option>
@@ -126,6 +126,8 @@
 
                             </select>
                         </div>
+                        
+                  
 
                         <div class="wrap-input100 validate-input">
                             <label>Seleccione la receta:</label>

@@ -54,7 +54,6 @@ public class MenuDAO extends Conexion {
     public Menu getMenu(int id) {
         Menu menu = null;
         
-        
         try {
             
            Connection cn = conexion.getConnection();

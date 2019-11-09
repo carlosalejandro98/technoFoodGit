@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -35,9 +36,9 @@ public class servletReserva extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         request.setCharacterEncoding("UTF-8");
-
+        
         String opciones = request.getParameter("btnAccion");
         // Preguntamos por el contenido del boton
         if (opciones.equals("Reservar")) {
@@ -46,71 +47,91 @@ public class servletReserva extends HttpServlet {
         if (opciones.equals("Cancelar")) {
             cancelar(request, response);
         }
+        if (opciones.equals("Buscar")) {
+            buscar(request, response);
+        }
+        
     }
-
+    
     protected void reservar(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        MesaDAO daoMesa = new MesaDAO();
+        
         try {
-
+            
             String rut = request.getParameter("txtRut");
             String nombre = request.getParameter("txtNombre");
             String apellido = request.getParameter("txtApellido");
             int telefono = Integer.parseInt(request.getParameter("txtTelefono"));
             String correo = request.getParameter("txtCorreo");
             int asiento = Integer.parseInt(request.getParameter("txtAsientos"));
-
+            
             String fechaReserva = request.getParameter("txtFecha");
             SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
             java.util.Date formato = f.parse(fechaReserva);
             //Date formato = (Date) new SimpleDateFormat("yyyy-MM-dd").parse(fechaReserva);
             //java.sql.Date fecha=java.sql.Date.valueOf(fechaReserva);
             java.sql.Date fecha = new java.sql.Date(formato.getTime());
-
+            
             int mesa = Integer.parseInt(request.getParameter("cboMesa"));
-
+            
             Reserva reserva = new Reserva(rut, nombre, apellido, telefono, correo, asiento, fecha, mesa);
-            Mesa m = new Mesa(mesa);
             ReservarDAO dao = new ReservarDAO();
-
+            
             if (dao.create(reserva)) {
-                daoMesa.update(m);
-                request.setAttribute("msjOK", "Reserva Creada");
+                
+                List<Reserva> recerva1;
+                recerva1 = dao.listar(rut);
+                request.setAttribute("reservaLista", recerva1);
+                
             } else {
                 request.setAttribute("msjNO", "Error");
             }
-
+            
         } catch (Exception e) {
             request.setAttribute("msjNO", "Error: " + e.getMessage());
         } finally {
-            request.getRequestDispatcher("reservar.jsp").forward(request, response);
+            request.getRequestDispatcher("ticketAgregado.jsp").forward(request, response);
         }
-
+        
     }
-
+    
     protected void cancelar(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         try {
             // Recibimos los datos del formulario
             String rut = request.getParameter("txtId");
             // Llamamos al DAO para conectarnos a la BD
             Reserva reserva = new Reserva(rut);
             ReservarDAO dao = new ReservarDAO();
-
+            
             if (dao.delete(reserva)) {
                 request.setAttribute("msjOK", "Reserva Cancelada");
             } else {
                 request.setAttribute("msjNO", "Error");
             }
-
+            
         } catch (Exception e) {
             request.setAttribute("msjNO", "Error: " + e.getMessage());
         } finally {
             request.getRequestDispatcher("cancelarReserva.jsp").forward(request, response);
         }
-
+        
+    }
+    
+    protected void buscar(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String rut = request.getParameter("txtRut");
+        
+        ReservarDAO dao = new ReservarDAO();
+        Reserva r = new Reserva();
+        List<Reserva> reserva;
+        
+        reserva = dao.listar(rut);
+        request.setAttribute("listarReserva", reserva);
+        
+        request.getRequestDispatcher("ticket.jsp").forward(request, response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

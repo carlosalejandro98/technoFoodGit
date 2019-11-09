@@ -1,15 +1,23 @@
 package dao;
 
 import Interface.Metodos;
+import dto.Receta;
 import dto.Reserva;
+import java.sql.CallableStatement;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 import modelo.Conexion;
+import oracle.jdbc.OracleCallableStatement;
+import oracle.jdbc.OracleTypes;
 
 public class ReservarDAO implements Metodos<Reserva> {
 
     private static final String SQL_INSERT = "{call Sp_Agregar_Reserva(?,?,?,?,?,?,?,?)}";
     private static final String SQL_DELETE = "{call Sp_Eliminar_Reserva_Rut(?)}";
+    private static final String SQL_READALL = "{call Sp_Listar_Reserva_por_Rut(?)}";
 
     private static final Conexion conexion = Conexion.estado();
 
@@ -73,4 +81,84 @@ public class ReservarDAO implements Metodos<Reserva> {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+     public Reserva getReserva(String rut) {
+        Reserva reserva = null;
+        
+        try {
+            
+           Connection cn = conexion.getConnection();
+          
+            CallableStatement cstmt  = cn.prepareCall("{ ? = call Fn_Listar_Reserva_Rut(?)}");
+            
+            cstmt.setString(2, rut);
+            
+            cstmt.registerOutParameter(1, OracleTypes.CURSOR);
+            
+            cstmt.execute();
+           
+            ResultSet rs = ((OracleCallableStatement)cstmt).getCursor(1);
+            while (rs.next()) {
+                reserva = new Reserva(rs.getInt("id_reserva"), rs.getString("rut"), rs.getString("nombre"), rs.getString("apellido"), rs.getInt("asientos"), rs.getDate("fecha"));
+            }
+
+        } catch (Exception e) {
+            System.out.println("" + e.getMessage());
+        }
+        return reserva;
+
+    }
+    public Reserva getProducto(String rut) {
+        Reserva reserva = null;
+
+        try {
+            Connection cn = conexion.getConnection();
+            CallableStatement cstmt = cn.prepareCall("{call Sp_Listar_Reserva_por_Rut(?)}");
+            cstmt.setString(2, rut);
+            cstmt.registerOutParameter(1, OracleTypes.CURSOR);
+            cstmt.execute();
+
+            ResultSet rs = ((OracleCallableStatement) cstmt).getCursor(1);
+            while (rs.next()) {
+                reserva = new Reserva(rs.getInt("id_reserva"), rs.getString("rut"), rs.getString("nombre"), rs.getString("apellido"), rs.getInt("asientos"), rs.getDate("fecha"));
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return reserva;
+    }
+
+    public List<Reserva> listar(String rut) {
+        PreparedStatement pre;
+        CallableStatement cstmt;
+        Connection cn = conexion.getConnection();
+        List<Reserva> lista = new ArrayList<>();
+        try {
+            pre = conexion.getConnection().prepareStatement(SQL_READALL);
+            String llamarProcedimiento = "{call Sp_Listar_Reserva_por_Rut(?,?)}";
+            CallableStatement cs = cn.prepareCall(llamarProcedimiento);
+            cs.setString(2, rut);
+            cs.registerOutParameter(1, OracleTypes.CURSOR);
+
+            cs.executeQuery();
+
+            ResultSet rs = (ResultSet) cs.getObject(1);
+
+            while (rs.next()) {
+                Reserva reserva = new Reserva();
+                reserva.setId_reserva(rs.getInt("id_reserva"));
+                reserva.setRut(rs.getString("rut"));
+                reserva.setNombre(rs.getString("nombre"));
+                reserva.setApellido(rs.getString("apellido"));
+                reserva.setAsiento(rs.getInt("asientos"));
+                reserva.setFecha(rs.getDate("fecha"));
+
+                lista.add(reserva);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        } finally {
+            conexion.cerrarConexion();
+            return lista;
+        }
+    }
 }

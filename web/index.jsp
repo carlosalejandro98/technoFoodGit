@@ -210,6 +210,7 @@
                             <ul>
                                 <li><a class="cd-signin" href="reservar.jsp">Reservar</a></li>
                                 <li><a class="cd-signup" href="cancelarReserva.jsp">Cancelar Reserva</a></li>
+                                <li><a class="cd-signin" href="ticket.jsp">Descargar Reserva</a></li>
                             </ul>
                         </nav>
                     </div>

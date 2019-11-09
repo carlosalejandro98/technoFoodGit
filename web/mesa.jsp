@@ -33,6 +33,7 @@
             <ul class="pricingTable-firstTable">
                 <c:forEach var="aux" items="${listaMesa}">
                     <form action="servletMesa" method="POST">
+                        
                         <li class="pricingTable-firstTable_table">
 
                             <input type="number" value="${aux.getId_mesa()}" name="txtIdMesa" hidden="" />
@@ -49,6 +50,7 @@
 
                         </li>
                     </form>
+                            
                 </c:forEach>
 
             </ul>
